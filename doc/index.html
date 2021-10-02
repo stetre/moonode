@@ -1033,24 +1033,6 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 </li>
 </ul>
 </div>
-<div id="world_set_auto_disable_flag" class="ulist">
-<ul>
-<li>
-<p><em>world</em>:<strong>set_auto_disable_flag</strong>(<em>boolean</em>)<br>
-<em>world</em>:<strong>set_auto_disable_linear_threshold</strong>(<em>float</em>)<br>
-<em>world</em>:<strong>set_auto_disable_angular_threshold</strong>(<em>float</em>)<br>
-<em>world</em>:<strong>set_auto_disable_steps</strong>(<em>integer</em>)<br>
-<em>world</em>:<strong>set_auto_disable_time</strong>(<em>float</em>)<br>
-<em>world</em>:<strong>set_auto_disable_average_samples_count</strong>(<em>integer</em>)<br>
-<em>boolean</em> = <em>world</em>:<strong>get_auto_disable_flag</strong>( )<br>
-<em>float</em> = <em>world</em>:<strong>get_auto_disable_linear_threshold</strong>( )<br>
-<em>float</em> = <em>world</em>:<strong>get_auto_disable_angular_threshold</strong>( )<br>
-<em>integer</em> = <em>world</em>:<strong>get_auto_disable_steps</strong>( )<br>
-<em>float</em> = <em>world</em>:<strong>get_auto_disable_time</strong>( )<br>
-<em>integer</em> = <em>world</em>:<strong>get_auto_disable_average_samples_count</strong>( )</p>
-</li>
-</ul>
-</div>
 <div id="world_impulse_to_force" class="ulist">
 <ul>
 <li>
@@ -1065,17 +1047,31 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <li>
 <p><em>world</em>:<strong>step</strong>(<em>dt</em>)<br>
 <em>world</em>:<strong>quick_step</strong>(<em>dt</em>)<br>
-<span class="small"><em>dt</em>: float.</span></p>
+<em>world</em>:<strong>set_quick_step_num_iterations</strong>(<em>integer</em>)<br>
+<em>world</em>:<strong>set_quick_step_w</strong>(<em>float</em>)<br>
+<em>integer</em> = <em>world</em>:<strong>get_quick_step_num_iterations</strong>( )<br>
+<em>float</em> = <em>world</em>:<strong>get_quick_step_w</strong>( )<br>
+<span class="small"><em>dt</em>: float.<br>
+Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Stepping_Functions">Stepping Functions</a>.</span></p>
 </li>
 </ul>
 </div>
-<div id="world_set_quick_step" class="ulist">
+<div id="world_set_auto_disable_flag" class="ulist">
 <ul>
 <li>
-<p><em>world</em>:<strong>set_quick_step_num_iterations</strong>(<em>integer</em>)<br>
-<em>world</em>:<strong>set_quick_step_w</strong>(<em>float</em>)<br>
-<em>integer</em> = <em>world</em>:<strong>get_quick_step_num_iterations</strong>( )<br>
-<em>float</em> = <em>world</em>:<strong>get_quick_step_w</strong>( )</p>
+<p><em>world</em>:<strong>set_auto_disable_flag</strong>(<em>boolean</em>)<br>
+<em>world</em>:<strong>set_auto_disable_linear_threshold</strong>(<em>float</em>)<br>
+<em>world</em>:<strong>set_auto_disable_angular_threshold</strong>(<em>float</em>)<br>
+<em>world</em>:<strong>set_auto_disable_steps</strong>(<em>integer</em>)<br>
+<em>world</em>:<strong>set_auto_disable_time</strong>(<em>float</em>)<br>
+<em>world</em>:<strong>set_auto_disable_average_samples_count</strong>(<em>integer</em>)<br>
+<em>boolean</em> = <em>world</em>:<strong>get_auto_disable_flag</strong>( )<br>
+<em>float</em> = <em>world</em>:<strong>get_auto_disable_linear_threshold</strong>( )<br>
+<em>float</em> = <em>world</em>:<strong>get_auto_disable_angular_threshold</strong>( )<br>
+<em>integer</em> = <em>world</em>:<strong>get_auto_disable_steps</strong>( )<br>
+<em>float</em> = <em>world</em>:<strong>get_auto_disable_time</strong>( )<br>
+<em>integer</em> = <em>world</em>:<strong>get_auto_disable_average_samples_count</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Automatic_Enabling_and_Disabling">Automatic Enabling and Disabling</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1087,11 +1083,14 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <em>world</em>:<strong>set_linear_damping</strong>(<em>float</em>)<br>
 <em>world</em>:<strong>set_angular_damping</strong>(<em>float</em>)<br>
 <em>world</em>:<strong>set_damping</strong>(<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em>)<br>
+<em>world</em>:<strong>set_max_angular_speed</strong>(<em>float</em>)<br>
 <em>float</em> = <em>world</em>:<strong>get_linear_damping_threshold</strong>( )<br>
 <em>float</em> = <em>world</em>:<strong>get_angular_damping_threshold</strong>( )<br>
 <em>float</em> = <em>world</em>:<strong>get_linear_damping</strong>( )<br>
 <em>float</em> = <em>world</em>:<strong>get_angular_damping</strong>( )<br>
-<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em> = <em>world</em>:<strong>get_damping</strong>( )</p>
+<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em> = <em>world</em>:<strong>get_damping</strong>( )<br>
+<em>float</em> = <em>world</em>:<strong>get_max_angular_speed</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Damping_2">Damping</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1101,15 +1100,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <p><em>world</em>:<strong>set_contact_max_correcting_vel</strong>(<em>float</em>)<br>
 <em>world</em>:<strong>set_contact_surface_layer</strong>(<em>float</em>)<br>
 <em>float</em> = <em>world</em>:<strong>get_contact_max_correcting_vel</strong>( )<br>
-<em>float</em> = <em>world</em>:<strong>get_contact_surface_layer</strong>( )<br></p>
-</li>
-</ul>
-</div>
-<div id="world_set_max_angular_speed" class="ulist">
-<ul>
-<li>
-<p><em>world</em>:<strong>set_max_angular_speed</strong>(<em>float</em>)<br>
-<em>float</em> = <em>world</em>:<strong>get_max_angular_speed</strong>( )<br></p>
+<em>float</em> = <em>world</em>:<strong>get_contact_surface_layer</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Contact_Parameters">Contact Parameters</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1141,7 +1133,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <a href="#mat3"><em>mat3</em></a> = <em>body</em>:<strong>get_rotation</strong>( )<br>
 <a href="#quat"><em>quat</em></a> = <em>body</em>:<strong>get_quaternion</strong>( )<br>
 <a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_linear_vel</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_angular_vel</strong>( )</p>
+<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_angular_vel</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Position_and_orientation">Position and orientation</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1149,14 +1142,7 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <ul>
 <li>
 <p><em>body</em>:<strong>set_mass</strong>( <a href="#mass"><em>mass</em></a>)<br>
-<a href="#mass"><em>mass</em></a> = <em>body</em>:<strong>get_mass</strong>( )<br></p>
-</li>
-</ul>
-</div>
-<div id="body_add_force" class="ulist">
-<ul>
-<li>
-<p><em>body</em>:<strong>add_force</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>body</em>:<strong>add_force</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>body</em>:<strong>add_torque</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>body</em>:<strong>add_rel_force</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>body</em>:<strong>add_rel_torque</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
@@ -1166,8 +1152,10 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <em>body</em>:<strong>add_rel_force_at_rel_pos</strong>(<a href="#vec3"><em>vec3</em></a>, <em><a href="#vec3">vec3</a><sub>pos</sub></em>)<br>
 <em>body</em>:<strong>set_force</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>body</em>:<strong>set_torque</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<a href="#mass"><em>mass</em></a> = <em>body</em>:<strong>get_mass</strong>( )<br>
 <a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_force</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_torque</strong>( )</p>
+<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_torque</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Mass_and_force">Mass and force</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1176,7 +1164,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <li>
 <p><em>body</em>:<strong>set_dynamic</strong>( )<br>
 <em>body</em>:<strong>set_kinematic</strong>( )<br>
-<em>boolean</em> = <em>body</em>:<strong>is_kinematic</strong>( )<br></p>
+<em>boolean</em> = <em>body</em>:<strong>is_kinematic</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Kinematic_State">Kinematic State</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1188,7 +1177,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_point_vel</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_pos_rel_point</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>vector_to_world</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>vector_from_world</strong>(<a href="#vec3"><em>vec3</em></a>)</p>
+<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>vector_from_world</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Utility">Utility</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1197,14 +1187,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <li>
 <p><em>body</em>:<strong>enable</strong>( )<br>
 <em>body</em>:<strong>disable</strong>( )<br>
-<em>boolean</em> = <em>body</em>:<strong>is_enabled</strong>( )<br></p>
-</li>
-</ul>
-</div>
-<div id="body_set_auto_disable" class="ulist">
-<ul>
-<li>
-<p><em>body</em>:<strong>set_auto_disable_defaults</strong>( )<br>
+<em>boolean</em> = <em>body</em>:<strong>is_enabled</strong>( )<br>
+<em>body</em>:<strong>set_auto_disable_defaults</strong>( )<br>
 <em>body</em>:<strong>set_auto_disable_flag</strong>(<em>boolean</em>)<br>
 <em>body</em>:<strong>set_auto_disable_linear_threshold</strong>(<em>float</em>)<br>
 <em>body</em>:<strong>set_auto_disable_angular_threshold</strong>(<em>float</em>)<br>
@@ -1216,7 +1200,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Err
 <em>float</em> = <em>body</em>:<strong>get_auto_disable_angular_threshold</strong>( )<br>
 <em>integer</em> = <em>body</em>:<strong>get_auto_disable_steps</strong>( )<br>
 <em>float</em> = <em>body</em>:<strong>get_auto_disable_time</strong>( )<br>
-<em>integer</em> = <em>body</em>:<strong>get_auto_disable_average_samples_count</strong>( )</p>
+<em>integer</em> = <em>body</em>:<strong>get_auto_disable_average_samples_count</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Automatic_Enabling_and_Disabling">Automatic Enabling and Disabling</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1238,19 +1223,14 @@ Passing <em>func=nil</em> removes the callback.</span></p>
 <em>body</em>:<strong>set_linear_damping</strong>(<em>float</em>)<br>
 <em>body</em>:<strong>set_angular_damping</strong>(<em>float</em>)<br>
 <em>body</em>:<strong>set_damping</strong>(<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em>)<br>
+<em>body</em>:<strong>set_max_angular_speed</strong>(<em>float</em>)<br>
 <em>float</em> = <em>body</em>:<strong>get_linear_damping_threshold</strong>( )<br>
 <em>float</em> = <em>body</em>:<strong>get_angular_damping_threshold</strong>( )<br>
 <em>float</em> = <em>body</em>:<strong>get_linear_damping</strong>( )<br>
 <em>float</em> = <em>body</em>:<strong>get_angular_damping</strong>( )<br>
-<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em> = <em>body</em>:<strong>get_damping</strong>( )</p>
-</li>
-</ul>
-</div>
-<div id="body_set_max_angular_speed" class="ulist">
-<ul>
-<li>
-<p><em>body</em>:<strong>set_max_angular_speed</strong>(<em>float</em>)<br>
-<em>float</em> = <em>body</em>:<strong>get_max_angular_speed</strong>( )<br></p>
+<em>float<sub>lin</sub></em>, <em>float<sub>ang</sub></em> = <em>body</em>:<strong>get_damping</strong>( )<br>
+<em>float</em> = <em>body</em>:<strong>get_max_angular_speed</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Damping_2">Damping</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1258,29 +1238,18 @@ Passing <em>func=nil</em> removes the callback.</span></p>
 <ul>
 <li>
 <p><em>body</em>:<strong>set_finite_rotation_mode</strong>(<em>boolean</em>)<br>
+<em>body</em>:<strong>set_finite_rotation_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>body</em>:<strong>set_gravity_mode</strong>(<em>boolean</em>)<br>
 <em>body</em>:<strong>set_gyroscopic_mode</strong>(<em>boolean</em>)<br>
 <em>boolean</em> = <em>body</em>:<strong>get_finite_rotation_mode</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_finite_rotation_axis</strong>( )<br>
 <em>boolean</em> = <em>body</em>:<strong>get_gravity_mode</strong>( )<br>
-<em>boolean</em> = <em>body</em>:<strong>get_gyroscopic_mode</strong>( )<br></p>
-</li>
-</ul>
-</div>
-<div id="body_set_finite_rotation_axis" class="ulist">
-<ul>
-<li>
-<p><em>body</em>:<strong>set_finite_rotation_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<a href="#vec3"><em>vec3</em></a> = <em>body</em>:<strong>get_finite_rotation_axis</strong>( )</p>
-</li>
-</ul>
-</div>
-<div id="body_get_world" class="ulist">
-<ul>
-<li>
-<p><a href="#world"><em>world</em></a> = <em>body</em>:<strong>get_world</strong>( )<br>
+<em>boolean</em> = <em>body</em>:<strong>get_gyroscopic_mode</strong>( )<br>
+<a href="#world"><em>world</em></a> = <em>body</em>:<strong>get_world</strong>( )<br>
 <em>{<a href="#joint">joint</a>}</em> = <em>body</em>:<strong>get_joints</strong>( )<br>
 <em>{<a href="#geom">geom</a>}</em> = <em>body</em>:<strong>get_geoms</strong>( )<br>
-<em>integer</em> = <em>body</em>:<strong>get_num_joints</strong>( )</p>
+<em>integer</em> = <em>body</em>:<strong>get_num_joints</strong>( )<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Miscellaneous_Body_Functions">Miscellaneous Body Functions</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1330,10 +1299,17 @@ Passing <em>func=nil</em> removes the callback.</span></p>
 <em>joint</em> = <strong>connecting_joint</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
 <em>{joint}</em> = <strong>connecting_joint_list</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
 <em>boolean</em> = <strong>are_connected</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
-<em>boolean</em> = <strong>are_connected_excluding</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>, <a href="#jointtype_"><em>jointtype</em></a>)<br>
-<em>joint</em>:<strong>set_feedback</strong>(<em>boolean</em>)<br>
+<em>boolean</em> = <strong>are_connected_excluding</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>, <a href="#jointtype_"><em>jointtype</em></a>)<br></p>
+</li>
+</ul>
+</div>
+<div id="joint_feedback" class="ulist">
+<ul>
+<li>
+<p><em>joint</em>:<strong>set_feedback</strong>(<em>boolean</em>)<br>
 <em>force<sub>1</sub></em>, <em>torque<sub>1</sub></em>, <em>force<sub>2</sub></em>, <em>torque<sub>2</sub></em> = <em>joint</em>:<strong>get_feedback</strong>( )<br>
-<span class="small"><em>force<sub>1</sub></em>, <em>torque<sub>1</sub></em>, <em>force<sub>2</sub></em>, <em>torque<sub>2</sub></em>: <a href="#vec3">vec3</a>.</span></p>
+<span class="small"><em>force<sub>1</sub></em>, <em>torque<sub>1</sub></em>, <em>force<sub>2</sub></em>, <em>torque<sub>2</sub></em>: <a href="#vec3">vec3</a>.<br>
+Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Joint_feedback">Joint feedback</a>.</span></p>
 </li>
 </ul>
 </div>

@@ -99,7 +99,7 @@ while t < t_stop do
       world:quick_step(STEP)
       ode.destroy_joint_group(GROUPID) 
    end
-   -- Now it would be the time to render the scene, but her for simplicity
+   -- Now it would be the time to render the scene, but here for simplicity
    -- we just print the positions of the objects, at regular intervals:
    if t > t_next_render then
       local p = box:get_position()

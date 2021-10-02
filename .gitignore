@@ -4,9 +4,12 @@
 *.so
 *.dll
 *.o
+*.a
 *.swp
 *.symbols
 core.*
 local/
 src/TODO
 src/DIFF
+src/ode
+src/ode-0.16.2

@@ -42,9 +42,12 @@ _joint_ = *connecting_joint*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _{joint}_ = *connecting_joint_list*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _boolean_ = *are_connected*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _boolean_ = *are_connected_excluding*(<<body, _body~1~_>>, <<body, _body~2~_>>, <<jointtype_, _jointtype_>>) +
-_joint_++:++*set_feedback*(_boolean_) +
+
+[[joint_feedback]]
+* _joint_++:++*set_feedback*(_boolean_) +
 _force~1~_, _torque~1~_, _force~2~_, _torque~2~_ = _joint_++:++*get_feedback*( ) +
-[small]#_force~1~_, _torque~1~_, _force~2~_, _torque~2~_: <<vec3, vec3>>.#
+[small]#_force~1~_, _torque~1~_, _force~2~_, _torque~2~_: <<vec3, vec3>>. +
+Rfr: http://ode.org/wiki/index.php?title=Manual#Joint_feedback[Joint feedback].#
 
 [[joint_set_param]]
 * _joint_++:++*set_param*(<<param, _param_>>, _float_, [_paramgroup_]) +

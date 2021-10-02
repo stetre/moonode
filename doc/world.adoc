@@ -33,6 +33,21 @@ _cfm_ = _world_++:++*get_cfm*( ) +
 _cfm_: float (_cfm_ &ge; 0). +
 Rfr: http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Error_Reduction_Parameter_.28ERP.29[Error Reduction Parameter] - http://ode.org/wiki/index.php?title=Manual#Soft_constraint_and_Constraint_Force_Mixing_.28CFM.29[Constraint Force Mixing].#
 
+[[world_impulse_to_force]]
+* _force_ = _world_++:++*impulse_to_force*(_dt_, _impulse_) +
+[small]#_dt_: float. +
+_force_, _impulse_: <<vec3, vec3>>.#
+
+[[world_step]]
+* _world_++:++*step*(_dt_) +
+_world_++:++*quick_step*(_dt_) +
+_world_++:++*set_quick_step_num_iterations*(_integer_) +
+_world_++:++*set_quick_step_w*(_float_) +
+_integer_ = _world_++:++*get_quick_step_num_iterations*( ) +
+_float_ = _world_++:++*get_quick_step_w*( ) +
+[small]#_dt_: float. +
+Rfr: http://ode.org/wiki/index.php?title=Manual#Stepping_Functions[Stepping Functions].#
+
 [[world_set_auto_disable_flag]]
 * _world_++:++*set_auto_disable_flag*(_boolean_) +
 _world_++:++*set_auto_disable_linear_threshold*(_float_) +
@@ -45,23 +60,8 @@ _float_ = _world_++:++*get_auto_disable_linear_threshold*( ) +
 _float_ = _world_++:++*get_auto_disable_angular_threshold*( ) +
 _integer_ = _world_++:++*get_auto_disable_steps*( ) +
 _float_ = _world_++:++*get_auto_disable_time*( ) +
-_integer_ = _world_++:++*get_auto_disable_average_samples_count*( )
-
-[[world_impulse_to_force]]
-* _force_ = _world_++:++*impulse_to_force*(_dt_, _impulse_) +
-[small]#_dt_: float. +
-_force_, _impulse_: <<vec3, vec3>>.#
-
-[[world_step]]
-* _world_++:++*step*(_dt_) +
-_world_++:++*quick_step*(_dt_) +
-[small]#_dt_: float.#
-
-[[world_set_quick_step]]
-* _world_++:++*set_quick_step_num_iterations*(_integer_) +
-_world_++:++*set_quick_step_w*(_float_) +
-_integer_ = _world_++:++*get_quick_step_num_iterations*( ) +
-_float_ = _world_++:++*get_quick_step_w*( )
+_integer_ = _world_++:++*get_auto_disable_average_samples_count*( ) +
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Automatic_Enabling_and_Disabling[Automatic Enabling and Disabling].#
 
 [[world_damping]]
 * _world_++:++*set_linear_damping_threshold*(_float_) +
@@ -69,28 +69,19 @@ _world_++:++*set_angular_damping_threshold*(_float_) +
 _world_++:++*set_linear_damping*(_float_) +
 _world_++:++*set_angular_damping*(_float_) +
 _world_++:++*set_damping*(_float~lin~_, _float~ang~_) +
+_world_++:++*set_max_angular_speed*(_float_) +
 _float_ = _world_++:++*get_linear_damping_threshold*( ) +
 _float_ = _world_++:++*get_angular_damping_threshold*( ) +
 _float_ = _world_++:++*get_linear_damping*( ) +
 _float_ = _world_++:++*get_angular_damping*( ) +
-_float~lin~_, _float~ang~_ = _world_++:++*get_damping*( )
+_float~lin~_, _float~ang~_ = _world_++:++*get_damping*( ) +
+_float_ = _world_++:++*get_max_angular_speed*( ) +
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Damping_2[Damping].#
 
 [[world_contact]]
 * _world_++:++*set_contact_max_correcting_vel*(_float_) +
 _world_++:++*set_contact_surface_layer*(_float_) +
 _float_ = _world_++:++*get_contact_max_correcting_vel*( ) +
 _float_ = _world_++:++*get_contact_surface_layer*( ) +
-
-[[world_set_max_angular_speed]]
-* _world_++:++*set_max_angular_speed*(_float_) +
-_float_ = _world_++:++*get_max_angular_speed*( ) +
-
-////
-
-[[world_]]
-* _world_++:++**( ) +
-__ = _world_++:++**( ) +
-[small]#.#
-
-////
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Contact_Parameters[Contact Parameters].#
 
