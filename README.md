@@ -141,9 +141,9 @@ while t < t_stop do
    -- we just print the positions of the objects, at regular intervals:
    if t > t_next_render then
       local p = box:get_position()
-      printf("[%f] box position: {%f, %f, %f}\n", t-t_start, p[1], p[2], p[3])
+      printf("[%f] box position: { %f, %f, %f }\n", t-t_start, p[1], p[2], p[3])
       local p = cyl:get_position()
-      printf("[%f] cyl position: {%f, %f, %f}\n", t-t_start, p[1], p[2], p[3])
+      printf("[%f] cyl position: { %f, %f, %f }\n", t-t_start, p[1], p[2], p[3])
       t_next_render = t_next_render + RENDER_INTERVAL
    end
    t_last = t
