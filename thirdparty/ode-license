@@ -1,0 +1,8 @@
+The latest Open Dynamics Engine (ODE) source package is bundled with MoonODE,
+and located at /src/ode-<version>.tar.gz (e.g. /src/ode-0.16.2.tar.gz).
+
+The package is taken as is from https://bitbucket.org/odedevs/ode/downloads/, and
+contains licensing information for ODE itself.
+
+Stefano Trettel
+

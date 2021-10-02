@@ -1,0 +1,1 @@
+sudo make LUAVER=5.4 uninstall && sudo make LUAVER=5.4 install

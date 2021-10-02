@@ -1,0 +1,205 @@
+
+[[geom]]
+=== _geom_
+
+[small]#Rfr: 
+http://ode.org/wiki/index.php?title=Manual#Geoms[Geoms] -
+http://ode.org/wiki/index.php?title=Manual#General_geom_functions[General geom functions] - 
+http://ode.org/wiki/index.php?title=Manual#Geometry_Classes[Geometry Classes].#
+
+[[create_geom]]
+Geometric objects can be of the following subtypes:
+<<geom_sphere, *sphere*>>,
+<<geom_box, *box*>>,
+<<geom_plane, *plane*>>,
+<<geom_capsule, *capsule*>>,
+<<geom_cylinder, *cylinder*>>,
+<<geom_ray, *ray*>>,
+<<geom_convex, *convex*>>,
+<<geom_trimesh, *trimesh*>>, and
+<<geom_heightfield, *heightfield*>>.
+
+Each subtype has its specialized contructors and methods, in addition to the following methods that are common to all subtypes:
+
+[[geom_destroy]]
+* _geom_++:++*destroy*( ) +
+_geom_++:++*enable*( ) +
+_geom_++:++*disable*( ) +
+_boolean_ = _geom_++:++*is_enabled*( ) +
+_boolean_ = _space_++:++*is_space*( ) +
+_geom_++:++*set_body*([<<body, _body_>>]) +
+_geom_++:++*set_position*(<<vec3, _vec3_>>) +
+_geom_++:++*set_rotation*(<<mat3, _mat3_>>) +
+_geom_++:++*set_quaternion*(<<quat, _quat_>>) +
+_geom_++:++*set_offset_position*(<<vec3, _vec3_>>) +
+_geom_++:++*set_offset_rotation*(<<mat3, _mat3_>>) +
+_geom_++:++*set_offset_quaternion*(<<quat, _quat_>>) +
+_geom_++:++*set_offset_world_position*(<<vec3, _vec3_>>) +
+_geom_++:++*set_offset_world_rotation*(<<mat3, _mat3_>>) +
+_geom_++:++*set_offset_world_quaternion*(<<quat, _quat_>>) +
+_geom_++:++*set_category_bits*(_integer_) +
+_geom_++:++*set_collide_bits*(_integer_) +
+_geom_++:++*clear_offset*(<<vec3, _vec3_>>) +
+_boolean_ = _geom_++:++*is_offset*( ) +
+<<geomtype, _geomtype_>> = _geom_++:++*get_type*( ) +
+[<<space, _space_>>] = _geom_++:++*get_space*( ) +
+[<<body, _body_>>] = _geom_++:++*get_body*( ) +
+<<vec3, _vec3_>> = _geom_++:++*get_position*( ) +
+<<mat3, _mat3_>> = _geom_++:++*get_rotation*( ) +
+<<quat, _quat_>> = _geom_++:++*get_quaternion*( ) +
+<<vec3, _vec3_>> = _geom_++:++*get_offset_position*( ) +
+<<mat3, _mat3_>> = _geom_++:++*get_offset_rotation*( ) +
+<<quat, _quat_>> = _geom_++:++*get_offset_quaternion*( ) +
+_integer_ = _geom_++:++*get_category_bits*( ) +
+_integer_ = _geom_++:++*get_collide_bits*( ) +
+<<box3, _box3_>> = _geom_++:++*get_aabb*( ) +
+<<vec3, _vec3_>> = _geom_++:++*get_rel_point_pos*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _geom_++:++*get_pos_rel_point*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _geom_++:++*vector_to_world*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _geom_++:++*vector_from_world*(<<vec3, _vec3_>>) +
+
+[[geom_sphere]]
+==== geom_sphere
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Sphere_Class[Sphere Class]# 
+
+* <<geom, _geom_>> = *create_sphere*([<<space, _space_>>], _radius_) +
+_geom_++:++*set_radius*(_radius_) +
+_radius_ = _geom_++:++*get_radius*( ) +
+_float_ = _geom_++:++*point_depth*(<<vec3, _vec3_>>)
+
+[[geom_box]]
+==== geom_box
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Box_Class[Box Class]# 
+
+* <<geom, _geom_>> = *create_box*([<<space, _space_>>], _length~x~_, _length~y~_, _length~z~_) +
+_geom_++:++*set_lengths*(_length~x~_, _length~y~_, _length~z~_) +
+_length~x~_, _length~y~_, _length~z~_ = _geom_++:++*get_lengths*( ) +
+_float_ = _geom_++:++*point_depth*(<<vec3, _vec3_>>)
+
+[[geom_plane]]
+==== geom_plane
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Plane_Class[Plane Class]# 
+
+* <<geom, _geom_>> = *create_plane*([<<space, _space_>>], _a_, _b_, _c_, _d_) +
+_geom_++:++*set*(_a_, _b_, _c_, _d_) +
+_a_, _b_, _c_, _d_ = _geom_++:++*get*( ) +
+_float_ = _geom_++:++*point_depth*(<<vec3, _vec3_>>) +
+_n_, _p_, _q_ = _geom_++:++*basis*( ) +
+[small]#The plane equation is _ax + by + cz = d_. +
+_n_, _p_, _q_: <<vec3, vec3>> (orthonormal basis where _n_ is the plane normal _(a, b, c)_ and _q=n x p_).#
+
+[[geom_capsule]]
+==== geom_capsule
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Capsule_Class[Capsule Class]# 
+
+* <<geom, _geom_>> = *create_capsule*([<<space, _space_>>], _radius_, _length_) +
+_geom_++:++*set*(_radius_, _length_) +
+_radius_, _length_ = _geom_++:++*get*( ) +
+_float_ = _geom_++:++*point_depth*(<<vec3, _vec3_>>) +
+[small]#The capsule is composed of a z-aligned cylinder of the given _radius_ and _length_, capped with two hemispheres of the same radius.#
+
+[[geom_cylinder]]
+==== geom_cylinder
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Cylinder_Class[Cylinder Class]# 
+
+* <<geom, _geom_>> = *create_cylinder*([<<space, _space_>>], _radius_, _length_) +
+_geom_++:++*set*(_radius_, _length_) +
+_radius_, _length_ = _geom_++:++*get*( ) +
+[small]#The cylinder is z-aligned.#
+
+[[geom_ray]]
+==== geom_ray
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Ray_Class[Ray Class]# 
+
+* <<geom, _geom_>> = *create_ray*([<<space, _space_>>], _length_) +
+_geom_++:++*set*(_<<vec3, vec3>>~O~_, _<<vec3, vec3>>~dir~_) +
+_geom_++:++*set_length*(_length_) +
+_geom_++:++*set_first_contact*(_boolean_) +
+_geom_++:++*set_backface_cull*(_boolean_) +
+_geom_++:++*set_closest_hit*(_boolean_) +
+_<<vec3, vec3>>~O~_, _<<vec3, vec3>>~dir~_ = _geom_++:++*get*( ) +
+_length_ = _geom_++:++*get_length*( ) +
+_boolean_ = _geom_++:++*get_first_contact*( ) +
+_boolean_ = _geom_++:++*get_backface_cull*( ) +
+_boolean_ = _geom_++:++*get_closest_hit*( ) +
+[small]#_O_ is the origin of the ray, and _dir_ its direction.#
+
+[[geom_convex]]
+==== geom_convex
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Convex_Class[Convex Class]# 
+
+* <<geom, _geom_>> = *create_convex*([<<space, _space_>>], _planes_, _points_, _polygons_) +
+_geom_++:++*set*(_planes_, _points_, _polygons_) +
+[small]#_planes_: {<<vec4, vec4>>}. +
+_points_: {<<vec3, vec3>>}. +
+_polygons_: {{integer}} (each polygon is a list of 0-based integer indices).#
+
+[[geom_trimesh]]
+==== geom_trimesh
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Triangle_Mesh_Class[Triangle Mesh Class]# 
+
+* <<geom, _geom_>> = *create_trimesh*([<<space, _space_>>], <<tmdata, _tmdata_>>) +
+_geom_++:++*set_data*(<<tmdata, _tmdata_>>) +
+_geom_++:++*set_last_transform*(<<mat4, _mat4_>>) +
+<<tmdata, _tmdata_>> = _geom_++:++*get_data*( ) +
+<<mat4, _mat4_>> = _geom_++:++*get_last_transform*( ) +
+_integer_ = _geom_++:++*get_triangle_count*( ) +
+<<vec3, _vec3_>> = _geom_++:++*get_triangle*(_index_) +
+<<vec3, _vec3_>> = _geom_++:++*get_point*(_index_, _float~u~_, _float~v~_) +
+[small]#_index_: integer, 0-based index.#
+
+[[tmdata]]
+The purpose of _tmdata_ objects, described here, is to hold vertex data for triangle meshes.
+
+* _tmdata_ = *create_tmdata*(_ptype_, _positions_, _indices_) +
+[small]#Create a new _tmdata_ object. +
+_ptype_: '_float_'|'_double_'. +
+_positions_: binary string (packed vertex positions, _length = 3 * <<sizeof, sizeof>>(ptype) * numvertices_). +
+_indices_: binary string (packed element indices, _length = 3 * <<sizeof, sizeof>>('uint') * numtriangles_). +
+(Rfr: dTriMeshDataID)#
+
+* _tmdata_++:++*destroy*( ) +
+_tmdata_++:++*update*( ) +
+_tmdata_++:++*preprocess*([_build_concave_edges_], [_build_face_angles_]) +
+[small]#_build_concave_edges_, _build_face_angles_: boolean.#
+
+[[geom_heightfield]]
+==== geom_heightfield
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Heightfield_Class[Heightfield Class]# 
+
+* <<geom, _geom_>> = *create_heightfield*([<<space, _space_>>], <<hfdata, _hfdata_>>, _placeable_) +
+_geom_++:++*set_data*(<<hfdata, _hfdata_>>) +
+<<hfdata, _hfdata_>> = _geom_++:++*get_data*( ) +
+[small]#_placeable_: boolean.#
+
+[[hfdata]]
+The purpose of _hfdata_ objects, described here, is to hold or generate heightfield data.
+
+* _hfdata_ = *create_hfdata*(_datatype_, _data_, _width_, _depth_, _nw_, _nd_, _scale_, _offset_, _thickness_, _wrap_) +
+_hfdata_ = *create_hfdata_with_callback*(_func_, _width_, _depth_, _nw_, _nd_, _scale_, _offset_, _thickness_, _wrap_) +
+[small]#Create a new _hfdata_ object. +
+_datatype_: '_uchar_' | '_short_' | '_float_' | '_double_'. +
+_data_: binary string (packed height samples, length = _nw_ * _nd_ * <<sizeof, sizeof>>(_datatype_)). +
+_width_, _height_: float (dimensions of the heightfield, in world units). +
+_nw_, _nd_: integer (dimensions of the heightfield, in samples). +
+_scale_, _offset_: float (vertical scale and offset to apply to the raw height data). +
+_thickness_: float (thickness of an AABB added below the lowest point). +
+_wrap_: boolean (true to tile the heightfield infinitely). +
+The second version, instead of passing predefined data, specifies a callback (_func_) 
+which is invoked during the simulation as *double=func(hfdata, x, z)* and is expected
+to compute and return the height value for the point at integer coordinates _(x, z)_, where _x_ is along the width and _z_ is along the height. +
+(Rfr: dGeomHeightfieldDataBuild, dGeomHeightfieldDataBuildCallback).#
+
+* _hfdata_++:++*destroy*( ) +
+_hfdata_++:++*set_bounds*(_minheight_, _maxheight_) +
+[small]#_minheight_, _maxheight_: double.#
+

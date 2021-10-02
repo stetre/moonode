@@ -1,0 +1,96 @@
+
+== Rigid bodies
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Background[Background].#
+
+An object of the <<body, _body_>> type represents a *rigid body* with its properties relevant to
+the simulation, such as mass, position, orientation, velocity, etc.
+Rigid bodies may be connected by *joints* of different kinds, which are represented by objects of <<joint, _joint_>> subtypes.
+A *world*, represented by the <<world, _world_>> type, is a container for rigid bodies and joints.
+Rigid bodies in different worlds cannot interact, e.g. they can not be joined together nor collide with each other. An application would usually only need one world.
+
+[[world]]
+=== _world_
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#World[World].#
+
+
+[[create_world]]
+* _world_ = *create_world*( ) +
+_world_++:++*destroy*( ) +
+[small]#Create/delete a world.#
+
+[[world_set_gravity]]
+* _world_++:++*set_gravity*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _world_++:++*get_gravity*( )
+
+[[world_erp_cfm]]
+* _world_++:++*set_erp*(_erp_) +
+_world_++:++*set_cfm*(_cfm_) +
+_erp_ = _world_++:++*get_erp*( ) +
+_cfm_ = _world_++:++*get_cfm*( ) +
+[small]#_erp_: float (0 &le; _erp_ &le; 1). +
+_cfm_: float (_cfm_ &ge; 0). +
+Rfr: http://ode.org/wiki/index.php?title=Manual#Joint_error_and_the_Error_Reduction_Parameter_.28ERP.29[Error Reduction Parameter] - http://ode.org/wiki/index.php?title=Manual#Soft_constraint_and_Constraint_Force_Mixing_.28CFM.29[Constraint Force Mixing].#
+
+[[world_set_auto_disable_flag]]
+* _world_++:++*set_auto_disable_flag*(_boolean_) +
+_world_++:++*set_auto_disable_linear_threshold*(_float_) +
+_world_++:++*set_auto_disable_angular_threshold*(_float_) +
+_world_++:++*set_auto_disable_steps*(_integer_) +
+_world_++:++*set_auto_disable_time*(_float_) +
+_world_++:++*set_auto_disable_average_samples_count*(_integer_) +
+_boolean_ = _world_++:++*get_auto_disable_flag*( ) +
+_float_ = _world_++:++*get_auto_disable_linear_threshold*( ) +
+_float_ = _world_++:++*get_auto_disable_angular_threshold*( ) +
+_integer_ = _world_++:++*get_auto_disable_steps*( ) +
+_float_ = _world_++:++*get_auto_disable_time*( ) +
+_integer_ = _world_++:++*get_auto_disable_average_samples_count*( )
+
+[[world_impulse_to_force]]
+* _force_ = _world_++:++*impulse_to_force*(_dt_, _impulse_) +
+[small]#_dt_: float. +
+_force_, _impulse_: <<vec3, vec3>>.#
+
+[[world_step]]
+* _world_++:++*step*(_dt_) +
+_world_++:++*quick_step*(_dt_) +
+[small]#_dt_: float.#
+
+[[world_set_quick_step]]
+* _world_++:++*set_quick_step_num_iterations*(_integer_) +
+_world_++:++*set_quick_step_w*(_float_) +
+_integer_ = _world_++:++*get_quick_step_num_iterations*( ) +
+_float_ = _world_++:++*get_quick_step_w*( )
+
+[[world_damping]]
+* _world_++:++*set_linear_damping_threshold*(_float_) +
+_world_++:++*set_angular_damping_threshold*(_float_) +
+_world_++:++*set_linear_damping*(_float_) +
+_world_++:++*set_angular_damping*(_float_) +
+_world_++:++*set_damping*(_float~lin~_, _float~ang~_) +
+_float_ = _world_++:++*get_linear_damping_threshold*( ) +
+_float_ = _world_++:++*get_angular_damping_threshold*( ) +
+_float_ = _world_++:++*get_linear_damping*( ) +
+_float_ = _world_++:++*get_angular_damping*( ) +
+_float~lin~_, _float~ang~_ = _world_++:++*get_damping*( )
+
+[[world_contact]]
+* _world_++:++*set_contact_max_correcting_vel*(_float_) +
+_world_++:++*set_contact_surface_layer*(_float_) +
+_float_ = _world_++:++*get_contact_max_correcting_vel*( ) +
+_float_ = _world_++:++*get_contact_surface_layer*( ) +
+
+[[world_set_max_angular_speed]]
+* _world_++:++*set_max_angular_speed*(_float_) +
+_float_ = _world_++:++*get_max_angular_speed*( ) +
+
+////
+
+[[world_]]
+* _world_++:++**( ) +
+__ = _world_++:++**( ) +
+[small]#.#
+
+////
+

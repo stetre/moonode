@@ -1,0 +1,44 @@
+
+[[collision]]
+== Collision detection
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Collision_detection_2[Collision detection].#
+
+Objects of <<geom, _geom_>> subtypes represent *collision primitives*, i.e. geometric objects of
+various shapes and sizes that may collide and interpenetrate during the simulation. Objects of 
+<<space, _space_>> subtypes are containers for geoms, whose purpose is to speed up the
+collision detection process.
+
+Collision detection between a pair of geoms is achieved by calling <<collide, collide>>(&nbsp;),
+which in case of collision returns a list of contact points, each represented by a <<contactpoint, _contactpoint_>> struct). The application should call this function for each pair of geoms that may potentially
+collide.
+
+To speed up collision detection when several geoms are used, the best approach is to insert
+them in one or more collision spaces, set the <<near_callback, near callback>>, anf finally call
+<<space_collide, space_collide>>(&nbsp;) or <<space_collide2, space_collide2>>(&nbsp;).
+These functions will then invoke the callback only for those pairs of geoms and/or spaces that are
+likely to collide with each other, thus limiting the required number of <<collide, collide>>(&nbsp;)
+calls (that with this approach are to be made within the callback).
+
+[[collide]]
+* _boolean_, {<<contactpoint, _contactpoint_>>} = *collide*(_<<geom, geom>>~1~_, _<<geom, geom>>~2~_, _maxcontacts_, [<<collideflags, _collideflags_>>]) +
+[small]#Returns _true_ and the list of contact points (up to _maxcontacts_) if the two <<geom, geom>> objects intersect. Otherwise returns _false_.#
+
+[[space_collide]]
+* *space_collide*(_<<space, space>>_) +
+[small]#Determines potential intersections between pairs and executes the <<near_callback, near callback>> accordingly. +
+The callback is executed only for pairs of potentially intersecting geoms (internally, the same logic as in the _nearCallback_(&nbsp;) example from the http://ode.org/wiki/index.php?title=Manual#Collision_detection_2[ODE manual] is performed for intersecting spaces with other spaces or geoms) and would typically call <<collide, collide>>(&nbsp;) to generate contact points between the two objects, and possibly create <<joint_contact, contact joints>> between the associated bodies.#
+
+[[space_collide2]]
+* *space_collide2*(_<<space, space>>_) +
+*space_collide2*(_obj~1~_, _obj~2~_) +
+[small]#_obj~1~_, _obj~2~_: <<geom, geom>> or <<space, space>>. +
+Determines potential intersections between pairs and executes the <<near_callback, near callback>> accordingly. +
+The callback is executed even when one or both the objects is a space (no internal logic is performed), and would typically call <<collide, collide>>(&nbsp;) to generate contact points between the two objects (if they are both geoms), or recursively call <<space_collide2, space_collide2>>(&nbsp;) on them.#
+
+[[near_callback]]
+* *set_near_callback*([_func_]) +
+[small]#Sets the callback to be invoked by calls of <<space_collide, space_collide>>(&nbsp;) or <<space_collide2, space_collide2>>(&nbsp;). +
+The callback is executed as *func(obj~1~, obj~2~)*, where the arguments are two potentially colliding <<geom, _geom_>> or <<space, _space_>> objects. If the callback is invoked by <<space_collide, space_collide>>(&nbsp;) calls, then _obj~1~_ and _obj~2~_ are both geoms, otherwise they may be either geoms or spaces. +
+Any previously set callback is overridden. Passing _func=nil_ unregisters the callback.#
+

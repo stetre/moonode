@@ -1,0 +1,282 @@
+
+[[joint]]
+=== _joint_
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Joint_and_constraints[Joint and constraints] -
+http://ode.org/wiki/index.php?title=Manual#Joint_Types_and_Functions[Joint types and functions].#
+
+[[create_joint]]
+Joints may be of the following subtypes:
+<<joint_null, *null*>>,
+<<joint_contact, *contact*>>,
+<<joint_ball, *ball*>>,
+<<joint_hinge, *hinge*>>,
+<<joint_slider, *slider*>>,
+<<joint_hinge2, *hinge2*>>,
+<<joint_universal, *universal*>>,
+<<joint_pr, *pr*>>,
+<<joint_pu, *pu*>>,
+<<joint_piston, *piston*>>,
+<<joint_fixed, *fixed*>>,
+<<joint_amotor, *amotor*>>,
+<<joint_lmotor, *lmotor*>>,
+<<joint_plane2d, *plane2d*>>,
+<<joint_dball, *dball*>>,
+<<joint_dhinge, *dhinge*>>, and
+<<joint_transmission, *transmission*>>.
+
+Each subtype has its specialized contructors and methods, in addition to the following methods that are common to all subtypes:
+
+[[joint_destroy]]
+* _joint_++:++*destroy*( ) +
+<<jointtype, _jointtype_>> = _joint_++:++*get_type*( ) +
+_joint_++:++*enable*( ) +
+_joint_++:++*disable*( ) +
+_boolean_ = _joint_++:++*is_enabled*( ) +
+_integer_ = _joint_++:++*get_num_bodies*( ) +
+_joint_++:++*attach*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
+<<body, _body~1~_>>, <<body, _body~2~_>> = _joint_++:++*get_bodies*( ) +
+<<body, _body_>> = _joint_++:++*get_body1*( ) +
+<<body, _body_>> = _joint_++:++*get_body2*( ) +
+_joint_ = *connecting_joint*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
+_{joint}_ = *connecting_joint_list*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
+_boolean_ = *are_connected*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
+_boolean_ = *are_connected_excluding*(<<body, _body~1~_>>, <<body, _body~2~_>>, <<jointtype_, _jointtype_>>) +
+_joint_++:++*set_feedback*(_boolean_) +
+_force~1~_, _torque~1~_, _force~2~_, _torque~2~_ = _joint_++:++*get_feedback*( ) +
+[small]#_force~1~_, _torque~1~_, _force~2~_, _torque~2~_: <<vec3, vec3>>.#
+
+[[joint_set_param]]
+* _joint_++:++*set_param*(<<param, _param_>>, _float_, [_paramgroup_]) +
+_float_ = _joint_++:++*get_param*(<<param, _param_>>, [_paramgroup_]) +
+[small]#_paramgroup_: 1, 2, or 3 (defaults to 1). +
+Rfr: http://ode.org/wiki/index.php?title=Manual#Parameter_Functions[Parameter Functions].#
+
+
+[[joint_null]]
+==== joint_null
+
+* <<joint, _joint_>> = *create_null_joint*(<<world, _world_>>) +
+
+[[joint_contact]]
+==== joint_contact
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Contact[Contact].#
+
+* <<joint, _joint_>> = *create_contact_joint*(<<world, _world_>>, _groupid_, <<contactpoint, _contactpoint_>>, [_surfparams_], [_fdir1_]) +
+_binstring_ = *pack_surfaceparameters*(<<surfaceparameters, _surfaceparameters_>>) +
+*destroy_joint_group*(_groupid_) +
+[small]#_groupid_: integer. +
+_surfparams_: _nil_ or <<surfaceparameters, surfaceparameters>> or binstring encoded with _pack_surfaceparameters( )_. +
+_fdir1_: <<vec3, vec3>> (first friction direction, see http://ode.org/wiki/index.php?title=Manual#Contact[Contact]).#
+
+[[joint_ball]]
+==== joint_ball
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Ball_and_Socket[Ball and Socket].#
+
+* <<joint, _joint_>> = *create_ball_joint*(<<world, _world_>>) +
+_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_
+
+
+[[joint_hinge]]
+==== joint_hinge
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Hinge[Hinge].#
+
+* <<joint, _joint_>> = *create_hinge_joint*(<<world, _world_>>) +
+_joint_++:++*add_torque*(_float_) +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
+_float_ = _joint_++:++*get_angle*( ) +
+_float_ = _joint_++:++*get_angle_rate*( )
+
+[[joint_slider]]
+==== joint_slider
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Slider[Slider].#
+
+* <<joint, _joint_>> = *create_slider_joint*(<<world, _world_>>) +
+_joint_++:++*add_force*(_float_) +
+_joint_++:++*set_axis*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
+_float_ = _joint_++:++*get_position*( ) +
+_float_ = _joint_++:++*get_position_rate*( )
+
+
+[[joint_hinge2]]
+==== joint_hinge2
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Hinge-2[Hinge-2].#
+
+* <<joint, _joint_>> = *create_hinge2_joint*(<<world, _world_>>) +
+_joint_++:++*add_torques*(_float~1~_, _float~2~_) +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
+
+
+[[joint_universal]]
+==== joint_universal
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Universal[Universal].#
+
+* <<joint, _joint_>> = *create_universal_joint*(<<world, _world_>>) +
+_joint_++:++*add_torques*(_float~1~_, _float~2~_) +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
+
+[[joint_pr]]
+==== joint_pr
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Prismatic_and_Rotoide[Prismatic and Rotoide].#
+
+* <<joint, _joint_>> = *create_pr_joint*(<<world, _world_>>) +
+_joint_++:++*add_torque*(_float_) +
+_joint_++:++*set_anchor*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angle*( ) +
+_float_ = _joint_++:++*get_position*( ) +
+_float_ = _joint_++:++*get_angle_rate*( ) +
+_float_ = _joint_++:++*get_position_rate*( )
+
+[[joint_pu]]
+==== joint_pu
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Prismatic_-_Universal[Prismatic - Universal].#
+
+* <<joint, _joint_>> = *create_pu_joint*(<<world, _world_>>) +
+_joint_++:++*set_anchor*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2,3_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
+_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_position*( ) +
+_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_position_rate*( )
+
+[[joint_piston]]
+==== joint_piston
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Piston[Piston].#
+
+* <<joint, _joint_>> = *create_piston_joint*(<<world, _world_>>) +
+_joint_++:++*add_force*(_float_) +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
+_float_ = _joint_++:++*get_angle*( ) +
+_float_ = _joint_++:++*get_position*( ) +
+_float_ = _joint_++:++*get_angle_rate*( ) +
+_float_ = _joint_++:++*get_position_rate*( )
+
+[[joint_fixed]]
+==== joint_fixed
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Fixed[Fixed].#
+
+* <<joint, _joint_>> = *create_fixed_joint*(<<world, _world_>>) +
+_joint_++:++*set*( ) +
+
+[[joint_amotor]]
+==== joint_amotor
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Angular_Motor[Angular Motor].#
+
+* <<joint, _joint_>> = *create_amotor_joint*(<<world, _world_>>) +
+_joint_++:++*add_torques*(_float~1~_ [, _float~2~_, _float~3~_]) +
+_joint_++:++*set_mode*(<<amotormode, _amotormode_>>) +
+_joint_++:++*set_num_axes*(_numaxes_) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) _N=1,2,3_ +
+_joint_++:++*set_angleN*(_float_) _N=1,2,3_ +
+<<amotormode, _amotormode_>> = _joint_++:++*get_mode*( ) +
+_numaxes_ = _joint_++:++*get_num_axes*( ) +
+<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
+_float_ = _joint_++:++*get_angleN*( ) _N=1,2,3_ +
+_float_ = _joint_++:++*get_angle_rateN*( ) _N=1,2,3_ +
+[small]#_numaxes_: 1, 2, or 3.#
+
+[[joint_lmotor]]
+==== joint_lmotor
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Linear_Motor[Linear Motor].#
+
+* <<joint, _joint_>> = *create_lmotor_joint*(<<world, _world_>>) +
+_joint_++:++*add_torques*(_float~1~_ [, _float~2~_, _float~3~_]) +
+_joint_++:++*set_num_axes*(_numaxes_) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) _N=1,2,3_ +
+_numaxes_ = _joint_++:++*get_num_axes*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
+[small]#_numaxes_: 1, 2, or 3.#
+
+[[joint_plane2d]]
+==== joint_plane2d
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Plane_2D[Plane 2D].#
+
+* <<joint, _joint_>> = *create_plane2d_joint*(<<world, _world_>>) +
+_joint_++:++*set_x_param*(<<param, _param_>>, _float_, [_paramgroup_]) +
+_joint_++:++*set_y_param*(<<param, _param_>>, _float_, [_paramgroup_]) +
+_joint_++:++*set_angle_param*(<<param, _param_>>, _float_, [_paramgroup_]) +
+[small]#See <<joint_set_param, set/get_param>>.#
+
+[[joint_dball]]
+==== joint_dball
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Double_Ball_And_Socket[Double Ball And Socket].#
+
+* <<joint, _joint_>> = *create_dball_joint*(<<world, _world_>>) +
+_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_distance*(_float_) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_distance*( )
+
+[[joint_dhinge]]
+==== joint_dhinge
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Double_Hinge[Double Hinge].#
+
+* <<joint, _joint_>> = *create_dhinge_joint*(<<world, _world_>>) +
+_joint_++:++*set_axis*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_distance*(_float_) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_distance*( )
+
+[[joint_transmission]]
+==== joint_transmission
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Transmission[Transmission].#
+
+* <<joint, _joint_>> = *create_transmission_joint*(<<world, _world_>>) +
+_joint_++:++*set_mode*(<<transmissionmode, _transmissionmode_>>) +
+_joint_++:++*set_axis*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_radiusN*(_float_) _N=1,2_ +
+_joint_++:++*set_ratio*(_float_) +
+_joint_++:++*set_backlash*(_float_) +
+<<transmissionmode, _transmissionmode_>> = _joint_++:++*get_mode*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_radiusN*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_ratio*( ) +
+_float_ = _joint_++:++*get_backlash*( ) +
+_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_contact_pointN*( ) _N=1,2_
+

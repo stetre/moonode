@@ -1,0 +1,25 @@
+
+[[flags]]
+== Flags
+
+Flags in MoonODE functions and structs are always represented as plain integers,
+and encoded in the same way as the corresponding flags in the ODE C API.
+
+The *ode* table contains the XXX values, renamed as *ode.XXX*
+(e.g. ode.CONTACTS_UNIMPORTANT, etc.).
+
+For each flags type (see the list below), a utility function is also available to map
+an integer code to a list of string literals, each corresponding to an individual bit set 
+in the code, and viceversa to encode an integer value from the individual bits given 
+as a list of string literals. 
+The generic definition of such functions is the following, where *xxxflags* stands for 
+*collideflags*, etc:
+
+[[xxxflags]]
+* _code_ = *xxxflags*(_s1_, _s2_, _..._) +
+_s1_, _s2_, _..._ = *xxxflags*(_code_) +
+[small]#Maps the integer _code_ to/from the list of string values _s1_, _s2_, _..._.#
+
+[[collideflags]]
+[small]#*collideflags*: Values: '_contacts unimportant_'.#
+

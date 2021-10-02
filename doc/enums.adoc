@@ -1,0 +1,34 @@
+
+[[enums]]
+== Enums
+
+ODE enums are mapped in MoonODE to sets of string literals (as is customary in Lua).
+
+Below are listed the enum types that are used in different places, together with the values they admit.
+Other enum types are described together with the functions that use them, either as parameters or
+as return values.
+
+[[amotormode]]
+[small]#*amotormode*: '_user_', '_euler_'.#
+
+[[axesorder]]
+[small]#*axesorder*: '_xyz_', '_xzy_', '_yxz_', '_yzx_', '_zxy_', '_zyx_'.#
+
+[[direction]]
+[small]#*direction*: '_x_', '_y_', '_z_'.#
+
+[[geomtype]]
+[small]#*geomtype*: '_sphere_', '_box_', '_capsule_', '_cylinder_', '_plane_', '_ray_', '_convex_', '_geom transform_', '_trimesh_', '_heightfield_', '_simple space_', '_hash space_', '_sap space_', '_quad tree space_', '_user1_', '_user2_', '_user3_', '_user4_'.#
+
+[[jointtype]]
+[small]#*jointtype*: '_none_', '_ball_', '_hinge_', '_slider_', '_contact_', '_universal_', '_hinge2_', '_fixed_', '_null_', '_amotor_', '_lmotor_', '_plane2d_', '_pr_', '_pu_', '_piston_', '_dball_', '_dhinge_', '_transmission_'.#
+
+[[param]]
+[small]#*param*: '_lo stop_', '_hi stop_', '_vel_', '_lo vel_', '_hi vel_', '_fmax_', '_fudge factor_', '_bounce_', '_cfm_', '_stop erp_', '_stop cfm_', '_suspension erp_', '_suspension cfm_', '_erp_'.#
+
+[[relativeorientation]]
+[small]#*relativeorientation*: '_global frame_', '_first body_', '_second body_'.#
+
+[[transmissionmode]]
+[small]#*transmissionmode*: '_parallel axes_', '_intersecting axes_', '_chain drive_'.#
+

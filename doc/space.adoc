@@ -1,0 +1,56 @@
+
+[[space]]
+=== _space_
+
+[small]#Rfr: 
+http://ode.org/wiki/index.php?title=Manual#Spaces[Spaces] -
+http://ode.org/wiki/index.php?title=Manual#Space_functions[Space Functions].#
+
+[[create_space]]
+Spaces can be of the following subtypes:
+<<space_simple, *simple*>>,
+<<space_hash, *hash*>>,
+<<space_quadtree, *quadtree*>>, and
+<<space_sap, *sap*>>.
+
+Each subtype has its specialized contructors and methods, in addition to the following methods that are common to all subtypes:
+
+[[space_destroy]]
+* _space_++:++*destroy*( ) +
+_boolean_ = _space_++:++*is_space*( ) +
+_space_++:++*set_cleanup*(_boolean_) +
+_boolean_ = _space_++:++*get_cleanup*( ) +
+_space_++:++*set_sublevel*(_integer_) +
+_integer_ = _space_++:++*set_sublevel*( )
+_space_++:++*add*(<<geom, _geom_>>) +
+_space_++:++*remove*(<<geom, _geom_>>) +
+_boolean_ = _space_++:++*query*(<<geom, _geom_>>) +
+_integer_ = _space_++:++*get_num_geoms*( ) +
+_{<<geom, geom>>}_ = _space_++:++*get_geoms*( ) +
+<<geomtype, _geomtype_>> =  _space_++:++*get_type*( )
+
+[[space_simple]]
+==== space_simple
+
+* <<space, _space_>> = *create_simple_space*([_<<space, parentspace>>_])
+
+[[space_hash]]
+==== space_hash
+
+* <<space, _space_>> = *create_hash_space*([_<<space, parentspace>>_]) +
+_space_++:++*set_levels*(_min_, _max_) +
+_min_, _max_ = _space_++:++*get_levels*( ) +
+[small]#_min_, _max_: integer.#
+
+[[space_quadtree]]
+==== space_quadtree
+
+* <<space, _space_>> = *create_quadtree_space*([_<<space, parentspace>>_], _center_, _extents_, _depth_) +
+[small]#_center_, _extents_: <<vec3, vec3>>. +
+_depth_: integer.#
+
+[[space_sap]]
+==== space_sap
+
+* <<space, _space_>> = *create_sap_space*([_<<space, parentspace>>_], <<axesorder, _axesorder_>>)
+

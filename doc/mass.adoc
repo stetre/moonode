@@ -1,0 +1,25 @@
+
+[[massfun]]
+== Mass functions
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Mass_functions[Mass functions].#
+
+* <<mass, _mass_>> = *mass*([_total_], [_center_], [_inertia_]) +
+<<mass, _mass_>> = *mass_sphere*(_density_, _radius_, [_total_]) +
+<<mass, _mass_>> = *mass_capsule*(_density_, <<direction, _direction_>>, _radius_, _length_, [_total_]) +
+<<mass, _mass_>> = *mass_cylinder*(_density_, <<direction, _direction_>>, _radius_, _length_, [_total_]) +
+<<mass, _mass_>> = *mass_box*(_density_, _length~x~_, _length~y~_, _length~z~_, [_total_]) +
+<<mass, _mass_>> = *mass_trimesh*(_density_, <<geom, _geom_>>, [_total_]) +
+[small]#If _total=true_, the _density_ parameter is interpreted as the total mass of the object.#
+
+* _boolean_ = *mass_check*(<<mass, _mass_>>) +
+_boolean_ = _mass_++:++*check*( ) +
+<<mass, _mass_>> = *mass_adjust*(<<mass, _mass_>>, _total_) +
+<<mass, _mass_>> = _mass_++:++*adjust*(_total_) +
+<<mass, _mass_>> = *mass_translate*(<<mass, _mass_>>, <<vec3, _vec3_>>) +
+<<mass, _mass_>> = _mass_++:++*translate*(<<vec3, _vec3_>>) +
+<<mass, _mass_>> = *mass_rotate*(<<mass, _mass_>>, <<mat3, _mat3_>>) +
+<<mass, _mass_>> = _mass_++:++*rotate*(<<mat3, _mat3_>>) +
+<<mass, _mass_>> = *mass_add*(<<mass, _mass~a~_>>, <<mass, _mass~b~_>>) +
+<<mass, _mass_>> = _mass~a~_++:++*add*(<<mass, _mass~b~_>>) +
+

@@ -1,0 +1,39 @@
+
+== Introduction
+
+MoonODE is an almost one-to-one Lua binding library to the Open Dynamic Engine (ODE).
+This means that, by and large, it is intended to be used as described in the 
+http://ode.org/wiki/index.php?title=Manual[ODE Manual] (apart from coding in Lua, of course).
+
+This section gives a brief overview of the binding library, while the details are given 
+in the sections that follow.
+
+MoonODE binds ODE *objects* (_world_, _body_, etc.) to Lua userdata, which are 
+returned by the creating functions (_ode.create_world_(&nbsp;), _ode.create_body_(&nbsp;), etc) and are then used to refer to objects in Lua in the same way as one would use ODE handles in C.
+
+As a general rule, ODE functions are bound to MoonODE functions or methods
+whose names are (more or less) https://en.wikipedia.org/wiki/Snake_case[snake_case] versions of the original ones.
+
+The functions related to an object type - with the exception of the creating function - are
+bounded to methods of that object. For example, the C function _dBodySetPosition(body,...)_ becomes the method _body:set_position(...)_ in Lua.
+
+Objects are *garbage collected at exit* (which includes on error), and automatically
+deleted at the ODE, so there is no need to explicitly invoke their _free_(&nbsp;) methods at exit for cleanup. 
+
+Apart from at exit, however, objects are not automatically garbage collected 
+footnote:[Objects are anchored to the Lua registry at their creation, so even if the script does not
+have references to an object, a reference always exists on the registry and this prevents the 
+GC to collect it.]
+and one must release them explicitly when needed, e.g. to release resources when the
+application is not exiting and some objects are no longer needed.
+
+Releasing an object causes the automatic (pre) destruction of all its children
+objects, and the invalidation of any reference to the object and to its children.
+footnote:[It is good practice to not leave invalid references to objects around, because
+they prevent the GC to collect the memory associated with the userdata.]
+
+If not stated otherwise, *on error* all MoonODE functions raise a 
+http://www.lua.org/manual/5.3/manual.html#lua_error[Lua error]. 
+If needed, this behaviour can be overridden by wrapping function calls in the standard Lua 
+http://www.lua.org/manual/5.3/manual.html#pdf-pcall[pcall](&nbsp;).
+

@@ -1,0 +1,124 @@
+
+[[body]]
+=== _body_
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Rigid_bodies[Rigid bodies] -
+http://ode.org/wiki/index.php?title=Manual#Rigid_Body_Functions[Rigid body functions].#
+
+[[create_body]]
+* _body_ = *create_body*(<<world, _world_>>) +
+_body_++:++*destroy*( ) +
+[small]#Create/delete a body.#
+
+[[body_set_position]]
+* _body_++:++*set_position*(<<vec3, _vec3_>>) +
+_body_++:++*set_rotation*(<<mat3, _mat3_>>) +
+_body_++:++*set_quaternion*(<<quat, _quat_>>) +
+_body_++:++*set_linear_vel*(<<vec3, _vec3_>>) +
+_body_++:++*set_angular_vel*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_position*( ) +
+<<mat3, _mat3_>> = _body_++:++*get_rotation*( ) +
+<<quat, _quat_>> = _body_++:++*get_quaternion*( ) +
+<<vec3, _vec3_>> = _body_++:++*get_linear_vel*( ) +
+<<vec3, _vec3_>> = _body_++:++*get_angular_vel*( )
+
+
+[[body_set_mass]]
+* _body_++:++*set_mass*( <<mass, _mass_>>) +
+<<mass, _mass_>> = _body_++:++*get_mass*( ) +
+
+[[body_add_force]]
+* _body_++:++*add_force*(<<vec3, _vec3_>>) +
+_body_++:++*add_torque*(<<vec3, _vec3_>>) +
+_body_++:++*add_rel_force*(<<vec3, _vec3_>>) +
+_body_++:++*add_rel_torque*(<<vec3, _vec3_>>) +
+_body_++:++*add_force_at_pos*(<<vec3, _vec3_>>, _<<vec3, vec3>>~pos~_) +
+_body_++:++*add_force_at_rel_pos*(<<vec3, _vec3_>>, _<<vec3, vec3>>~pos~_) +
+_body_++:++*add_rel_force_at_pos*(<<vec3, _vec3_>>, _<<vec3, vec3>>~pos~_) +
+_body_++:++*add_rel_force_at_rel_pos*(<<vec3, _vec3_>>, _<<vec3, vec3>>~pos~_) +
+_body_++:++*set_force*(<<vec3, _vec3_>>) +
+_body_++:++*set_torque*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_force*( ) +
+<<vec3, _vec3_>> = _body_++:++*get_torque*( )
+
+[[body_set_dynamic]]
+* _body_++:++*set_dynamic*( ) +
+_body_++:++*set_kinematic*( ) +
+_boolean_ = _body_++:++*is_kinematic*( ) +
+
+[[body_get_rel_point_pos]]
+* <<vec3, _vec3_>> = _body_++:++*get_rel_point_pos*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_rel_point_vel*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_point_vel*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_pos_rel_point*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*vector_to_world*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*vector_from_world*(<<vec3, _vec3_>>)
+
+[[body_enable]]
+* _body_++:++*enable*( ) +
+_body_++:++*disable*( ) +
+_boolean_ = _body_++:++*is_enabled*( ) +
+
+[[body_set_auto_disable]]
+* _body_++:++*set_auto_disable_defaults*( ) +
+_body_++:++*set_auto_disable_flag*(_boolean_) +
+_body_++:++*set_auto_disable_linear_threshold*(_float_) +
+_body_++:++*set_auto_disable_angular_threshold*(_float_) +
+_body_++:++*set_auto_disable_steps*(_integer_) +
+_body_++:++*set_auto_disable_time*(_float_) +
+_body_++:++*set_auto_disable_average_samples_count*(_integer_) +
+_boolean_ = _body_++:++*get_auto_disable_flag*( ) +
+_float_ = _body_++:++*get_auto_disable_linear_threshold*( ) +
+_float_ = _body_++:++*get_auto_disable_angular_threshold*( ) +
+_integer_ = _body_++:++*get_auto_disable_steps*( ) +
+_float_ = _body_++:++*get_auto_disable_time*( ) +
+_integer_ = _body_++:++*get_auto_disable_average_samples_count*( )
+
+[[body_set_moved_callback]]
+* _body_++:++*set_moved_callback*([_func_]) +
+[small]#The callback is executed as *func(body)* +
+Passing _func=nil_ removes the callback.#
+
+[[body_damping]]
+* _body_++:++*set_damping_defaults*( ) +
+_body_++:++*set_linear_damping_threshold*(_float_) +
+_body_++:++*set_angular_damping_threshold*(_float_) +
+_body_++:++*set_linear_damping*(_float_) +
+_body_++:++*set_angular_damping*(_float_) +
+_body_++:++*set_damping*(_float~lin~_, _float~ang~_) +
+_float_ = _body_++:++*get_linear_damping_threshold*( ) +
+_float_ = _body_++:++*get_angular_damping_threshold*( ) +
+_float_ = _body_++:++*get_linear_damping*( ) +
+_float_ = _body_++:++*get_angular_damping*( ) +
+_float~lin~_, _float~ang~_ = _body_++:++*get_damping*( )
+
+[[body_set_max_angular_speed]]
+* _body_++:++*set_max_angular_speed*(_float_) +
+_float_ = _body_++:++*get_max_angular_speed*( ) +
+
+[[body_set_finite_rotation_mode]]
+* _body_++:++*set_finite_rotation_mode*(_boolean_) +
+_body_++:++*set_gravity_mode*(_boolean_) +
+_body_++:++*set_gyroscopic_mode*(_boolean_) +
+_boolean_ = _body_++:++*get_finite_rotation_mode*( ) +
+_boolean_ = _body_++:++*get_gravity_mode*( ) +
+_boolean_ = _body_++:++*get_gyroscopic_mode*( ) +
+
+[[body_set_finite_rotation_axis]]
+* _body_++:++*set_finite_rotation_axis*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _body_++:++*get_finite_rotation_axis*( )
+
+[[body_get_world]]
+* <<world, _world_>> = _body_++:++*get_world*( ) +
+_{<<joint, joint>>}_ = _body_++:++*get_joints*( ) +
+_{<<geom, geom>>}_ = _body_++:++*get_geoms*( ) +
+_integer_ = _body_++:++*get_num_joints*( )
+
+////
+[[body_]]
+* _body_++:++**( ) +
+__ = _body_++:++**( ) +
+[small]#.#
+
+////
+

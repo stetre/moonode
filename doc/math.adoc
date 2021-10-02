@@ -1,0 +1,59 @@
+
+[[mathfun]]
+== Math functions
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Math_functions[Math functions] - http://ode.org/wiki/index.php?title=Manual#Rotation_functions[Rotation functions].#
+
+* <<vec3, _vec3_>> = *v_normalize3*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_safe_normalize3*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_copy3*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_negate3*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_add3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_sub3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_scale3*(<<vec3, _vec3_>>, _float_) +
+<<vec3, _vec3_>> = *v_add_scaled3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>, _float_, _float_) +
+<<vec3, _vec3_>> = *v_add_three_scaled3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>, <<vec3, _vec3_>>, _float_, _float_, _float_) +
+_float_ = *v_length3*(<<vec3, _vec3_>>) +
+_float_ = *v_length_square3*(<<vec3, _vec3_>>) +
+_float_ = *v_distance3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+_float_ = *v_dot3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = *v_cross3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+_float_ = *v_max_difference3*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+<<vec3, _vec3_>>, <<vec3, _vec3_>>, <<vec3, _vec3_>> = *plane_basis*(<<vec3, _vec3_>>) +
+
+* <<vec4, _vec4_>> = *v_normalize4*(<<vec4, _vec4_>>) +
+<<vec4, _vec4_>> = *v_safe_normalize4*(<<vec4, _vec4_>>) +
+<<vec4, _vec4_>> = *v_copy4*(<<vec4, _vec4_>>) +
+_float_ = *v_max_difference4*(<<vec4, _vec4_>>, <<vec4, _vec4_>>) +
+
+* <<mat3, _mat3_>> = *m_zero3*( ) +
+<<mat3, _mat3_>> = *m_identity3*( ) +
+<<mat3, _mat3_>> = *m_copy3*(<<mat3, _mat3_>>) +
+<<mat3, _mat3_>> = *m_inverse3*(<<mat3, _mat3_>>) +
+_float_ = *m_det3*(<<mat3, _mat3_>>) +
+_float_ = *m_max_difference3*(<<mat3, _mat3_>>, <<mat3, _mat3_>>) +
+<<vec3, _vec3_>> = *m_get_column3*(<<mat3, _mat3_>>, _index_) +
+
+* <<mat4, _mat4_>> = *m_zero4*( ) +
+<<mat4, _mat4_>> = *m_identity4*( ) +
+<<mat4, _mat4_>> = *m_copy4*(<<mat4, _mat4_>>) +
+_float_ = *m_max_difference4*(<<mat4, _mat4_>>, <<mat4, _mat4_>>) +
+
+* <<mat3, _mat3_>> = *r_identity*( ) +
+<<mat3, _mat3_>> = *r_from_axis_and_angle*(<<vec3, _vec3_>>, _angle_) +
+<<mat3, _mat3_>> = *r_from_euler_angles*(_phi_, _theta_, _psi_) +
+<<mat3, _mat3_>> = *r_from_2_axes*(<<vec3, _vec3_>>, <<vec3, _vec3_>>) +
+<<mat3, _mat3_>> = *r_from_z_axis*(<<vec3, _vec3_>>) +
+<<mat3, _mat3_>> = *r_orthogonalize*(<<vec3, _vec3_>>) +
+<<mat3, _mat3_>> = *r_from_q*(<<quat, _quat_>>) +
+
+* <<quat, _quat_>> = *q_identity*( ) +
+<<quat, _quat_>> = *q_from_axis_and_angle*(<<vec3, _vec3_>>, _angle_) +
+<<quat, _quat_>> = *q_multiply0*(<<quat, _quat_>>, <<quat, _quat_>>) +
+<<quat, _quat_>> = *q_multiply1*(<<quat, _quat_>>, <<quat, _quat_>>) +
+<<quat, _quat_>> = *q_multiply2*(<<quat, _quat_>>, <<quat, _quat_>>) +
+<<quat, _quat_>> = *q_multiply3*(<<quat, _quat_>>, <<quat, _quat_>>) +
+<<quat, _quat_>> = *q_from_r*(<<mat3, _mat3_>>) +
+<<quat, _quat_>> = *dq_from_w*(<<vec3, _vec3_>>, <<quat, _quat_>>) +
+
+

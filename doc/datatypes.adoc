@@ -1,0 +1,118 @@
+
+[[datatypes]]
+== Data types
+
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#The_basic_data_types[The basic data types].#
+
+In this document, the _float_ and _integer_ types denote Lua numbers, while other types
+such as _boolean_, _string_, etc denote standard Lua types. 
+The type _number_ denotes a Lua number that may be either a _float_ or an _integer_.
+Note that _float_ here just means 'floating point' as opposed to 'integer', and does not imply 
+single-precision (all numbers are actually represented internally using double-precision).
+
+Angles are always expressed in radians.
+
+Vectors, matrices, quaternions, and bounding boxes are by default represented as Lua arrays containing
+_float_ elements (or arrays of arrays in the case of matrices). The meaning of the elements
+thus depends on their position, as detailed below, and there is no syntactic sugar 
+such as _v.x_ and _v.y_ to access them (unless one enables <<glmath_compat, GLMATH compatibility>>).
+
+A few other ODE structs are represented as string-indexed Lua tables, also described below.
+
+* [[vec3]]
+[small]#*vec3* = {_x_, _y_, _z_}#
+
+* [[vec4]]
+[small]#*vec4* = {_x_, _y_, _z_, _w_}#
+
+* [[mat3]]
+[small]#*mat3* = {{_a~11~_, _a~12~_, _a~13~_}, {_a~21~_, _a~22~_, _a~23~_}, {_a~31~_, _a~32~_, _a~33~_}}#
+
+* [[mat4]]
+[small]#*mat4* = {{_a~11~_, _a~12~_, _a~13~_, _a~14~_}, {_a~21~_, _a~22~_, _a~23~_, _a~24~_}, {_a~31~_, _a~32~_, _a~33~_, _a~34~_}, {_a~41~_, _a~42~_, _a~43~_, _a~44~_}}#
+
+* [[quat]]
+[small]#*quat* = {_w_, _x_, _y_, _z_} +
+_w_ is the scalar part and _(x, y, z)_ is the vector part.#
+
+* [[box3]]
+[small]#*box3* = {_x~min~_, _x~max~_, _y~min~_, _y~max~_, _z~min~_, _z~max~_}#
+
+////
+* [[color]]
+[small]#*color* = {_r_, _g_, _b_, _a_}#
+
+////
+
+'''
+
+Additional data structures:
+
+* [[mass]]
+[small]#*mass* = { +
+_total_: float, +
+_center_: <<vec3, vec3>>, +
+_inertia_: <<mat3, mat3>>, +
+} (Rfr: http://ode.org/wiki/index.php?title=Manual#Mass_functions[dMass])#
+
+
+* [[contactpoint]]
+[small]#*contactpoint* = { +
+_position_: <<vec3, vec3>>, +
+_normal_: <<vec3, vec3>>, +
+_depth_: float, +
+_geom1_: <<geom, geom>>, +
+_geom2_: <<geom, geom>>, +
+_side1_: integer, +
+_side2_: integer, +
+} (Rfr: http://ode.org/wiki/index.php?title=Manual#Contact_points[dContactGeom])#
+
+
+* [[surfaceparameters]]
+[small]#*surfaceparameters* = { +
+_mu_: float, +
+_mu2_: float (opt.), +
+_rho_: float (opt.), +
+_rho2_: float (opt.), +
+_rhoN_: float (opt.), +
+_bounce_: float (opt.), +
+_bounce_vel_: float (opt.), +
+_soft_erp_: float (opt.), +
+_soft_cfm_: float (opt.), +
+_motion1_: float (opt.), +
+_motion2_: float (opt.), +
+_motionN_: float (opt.), +
+_slip1_: float (opt.), +
+_slip2_: float (opt.), +
+_approx1_: boolean (opt., defaults to _false_), +
+_approx1_1_: boolean (opt., defaults to _false_), +
+_approx1_2_: boolean (opt., defaults to _false_), +
+_approx1_N_: boolean (opt., defaults to _false_), +
+} (Rfr: http://ode.org/wiki/index.php?title=Manual#Contact[dSurfaceParameters])#
+
+
+[[glmath_compat]]
+== GLMATH compatibility
+
+As an option, it is possible to instruct MoonODE to return vectors, matrices, quaternions, and boxes
+as https://github.com/stetre/moonglmath[MoonGLMATH] types, instead of returning them as plain tables
+(which is the default).
+footnote:[MoonGLMATH types are convenient because they support operators and synctatic sugar, but I
+chose not to impose their use because one may want to use an alternative math library, or none at all.]
+
+More precisely, when this functionality is enabled functions and methods will return values
+of the MoonGLMATH types *vec3*, *vec4*, *mat3*, etc. instead of the MoonODE types with the same names.
+
+(Notice that for function arguments nothing changes, since the above MoonGLMATH types are compatible
+with the corresponding plain tables used by default, thus they can be used as function arguments in
+any case).
+
+Use the following functions to control GLMATH compatibility:
+
+* *glmath_compat*(_boolean_) +
+[small]#Enables/disables GLMATH compatibility (which by default is disabled). +
+Enabling this functionality requires MoonGLMATH to be installed.#
+
+* _boolean_ = *is_glmath_compat*( ) +
+[small]#Returns _true_ if GLMATH compatibility is enabled.#
+

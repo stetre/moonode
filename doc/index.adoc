@@ -1,0 +1,82 @@
+= MoonODE Reference Manual
+Stefano Trettel
+v0.1, 2021-09-23
+:toc: left
+:toclevels: 2
+:stylesdir: ./
+:stylesheet: colony.css
+:source-highlighter: pygments
+:pygments-style: autumn
+:source-language: lua
+:exampledir: ../examples
+
+image::powered-by-lua.gif[Lua logo, link=http://www.lua.org]
+
+// Macros for trees: {tS} = "   ", {tI} = "│  ", {tH} = "├─ ", {tL} = "└─ "
+:tS: &#8192;&#8192;&#8192;&#8192;
+:tI: &#9474;&#8192;&#8192;&#8192;
+:tH: &#9500;&#9472;&#8192;
+:tL: &#9492;&#9472;&#8192;
+
+include::preface.adoc[]
+include::introduction.adoc[]
+
+== Objects
+
+Listed below are the Lua object types in MoonODE, together with the corresponding
+original types in ODE:
+
+[small]#Objects: +
+<<world, *world*>> _(dWorldID)_ +
+<<body, *body*>> _(dBodyID)_ +
+<<joint, *joint*>> _(dJointID)_ +
+{tH}<<joint_null, joint_null>> +
+{tH}<<joint_contact, joint_contact>> +
+{tH}<<joint_ball, joint_ball>> +
+{tH}<<joint_hinge, joint_hinge>> +
+{tH}<<joint_slider, joint_slider>> +
+{tH}<<joint_hinge2, joint_hinge2>> +
+{tH}<<joint_universal, joint_universal>> +
+{tH}<<joint_pr, joint_pr>> +
+{tH}<<joint_pu, joint_pu>> +
+{tH}<<joint_piston, joint_piston>> +
+{tH}<<joint_fixed, joint_fixed>> +
+{tH}<<joint_amotor, joint_amotor>> +
+{tH}<<joint_lmotor, joint_lmotor>> +
+{tH}<<joint_plane2d, joint_plane2d>> +
+{tH}<<joint_dball, joint_dball>> +
+{tH}<<joint_dhinge, joint_dhinge>> +
+{tL}<<joint_transmission, joint_transmission>> +
+<<geom, *geom*>> _(dGeomID)_ +
+{tH}<<geom_sphere, geom_sphere>> +
+{tH}<<geom_box, geom_box>> +
+{tH}<<geom_plane, geom_plane>> +
+{tH}<<geom_capsule, geom_capsule>> +
+{tH}<<geom_cylinder, geom_cylinder>> +
+{tH}<<geom_ray, geom_ray>> +
+{tH}<<geom_convex, geom_convex>> +
+{tH}<<geom_trimesh, geom_trimesh>> +
+{tL}<<geom_heightfield, geom_heightfield>> +
+<<tmdata, tmdata>> _(dTriMeshDataID)_ +
+<<hfdata, hfdata>> _(dHeightfieldDataID)_ +
+<<space, *space*>> _(dSpaceID)_ +
+{tH}<<space_simple, space_simple>> +
+{tH}<<space_hash, space_hash>> +
+{tH}<<space_quadtree, space_quadtree>> +
+{tL}<<space_sap, space_sap>>#
+
+
+include::world.adoc[]
+include::body.adoc[]
+include::joint.adoc[]
+include::collision.adoc[]
+include::geom.adoc[]
+include::space.adoc[]
+include::mass.adoc[]
+include::math.adoc[]
+include::random.adoc[]
+include::tracing.adoc[]
+include::datatypes.adoc[]
+include::datahandling.adoc[]
+include::enums.adoc[]
+include::flags.adoc[]
