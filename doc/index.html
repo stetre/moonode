@@ -1292,14 +1292,15 @@ Passing <em>func=nil</em> removes the callback.</span></p>
 <em>joint</em>:<strong>disable</strong>( )<br>
 <em>boolean</em> = <em>joint</em>:<strong>is_enabled</strong>( )<br>
 <em>integer</em> = <em>joint</em>:<strong>get_num_bodies</strong>( )<br>
-<em>joint</em>:<strong>attach</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
-<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a> = <em>joint</em>:<strong>get_bodies</strong>( )<br>
-<a href="#body"><em>body</em></a> = <em>joint</em>:<strong>get_body1</strong>( )<br>
-<a href="#body"><em>body</em></a> = <em>joint</em>:<strong>get_body2</strong>( )<br>
+<em>joint</em>:<strong>attach</strong>([<a href="#body"><em>body<sub>1</sub></em></a>], [<a href="#body"><em>body<sub>2</sub></em></a>])<br>
+[<a href="#body"><em>body<sub>1</sub></em></a>], [<a href="#body"><em>body<sub>2</sub></em></a>] = <em>joint</em>:<strong>get_bodies</strong>( )<br>
+[<a href="#body"><em>body</em></a>] = <em>joint</em>:<strong>get_body1</strong>( )<br>
+[<a href="#body"><em>body</em></a>] = <em>joint</em>:<strong>get_body2</strong>( )<br>
 <em>joint</em> = <strong>connecting_joint</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
 <em>{joint}</em> = <strong>connecting_joint_list</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
 <em>boolean</em> = <strong>are_connected</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>)<br>
-<em>boolean</em> = <strong>are_connected_excluding</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>, <a href="#jointtype_"><em>jointtype</em></a>)<br></p>
+<em>boolean</em> = <strong>are_connected_excluding</strong>(<a href="#body"><em>body<sub>1</sub></em></a>, <a href="#body"><em>body<sub>2</sub></em></a>, <a href="#jointtype_"><em>jointtype</em></a>)<br>
+<span class="small">Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Miscellaneous_Joint_Functions">Miscellaneous Joint Functions</a>.</span></p>
 </li>
 </ul>
 </div>
@@ -1360,8 +1361,10 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <ul>
 <li>
 <p><a href="#joint"><em>joint</em></a> = <strong>create_ball_joint</strong>(<a href="#world"><em>world</em></a>)<br>
-<em>joint</em>:<strong>set_anchorN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em></p>
+<em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_anchor2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br></p>
 </li>
 </ul>
 </div>
@@ -1378,7 +1381,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <em>joint</em>:<strong>add_torque</strong>(<em>float</em>)<br>
 <em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>joint</em>:<strong>set_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_angle</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_angle_rate</strong>( )</p>
@@ -1415,11 +1419,16 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <p><a href="#joint"><em>joint</em></a> = <strong>create_hinge2_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>add_torques</strong>(<em>float<sub>1</sub></em>, <em>float<sub>2</sub></em>)<br>
 <em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN</strong>( ) <em>N=1,2</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN_rate</strong>( ) <em>N=1,2</em></p>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1_rate</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2_rate</strong>( )</p>
 </li>
 </ul>
 </div>
@@ -1435,11 +1444,16 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <p><a href="#joint"><em>joint</em></a> = <strong>create_universal_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>add_torques</strong>(<em>float<sub>1</sub></em>, <em>float<sub>2</sub></em>)<br>
 <em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN</strong>( ) <em>N=1,2</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN_rate</strong>( ) <em>N=1,2</em></p>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1_rate</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2_rate</strong>( )<br></p>
 </li>
 </ul>
 </div>
@@ -1455,9 +1469,11 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <p><a href="#joint"><em>joint</em></a> = <strong>create_pr_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>add_torque</strong>(<em>float</em>)<br>
 <em>joint</em>:<strong>set_anchor</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_angle</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_position</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_angle_rate</strong>( )<br>
@@ -1476,12 +1492,18 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <li>
 <p><a href="#joint"><em>joint</em></a> = <strong>create_pu_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>set_anchor</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2,3</em><br>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis3</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2,3</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis3</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_position</strong>( )<br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN_rate</strong>( ) <em>N=1,2</em><br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1_rate</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2_rate</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_position_rate</strong>( )</p>
 </li>
 </ul>
@@ -1499,7 +1521,8 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <em>joint</em>:<strong>add_force</strong>(<em>float</em>)<br>
 <em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>joint</em>:<strong>set_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_angle</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_position</strong>( )<br>
@@ -1535,13 +1558,23 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <em>joint</em>:<strong>add_torques</strong>(<em>float<sub>1</sub></em> [, <em>float<sub>2</sub></em>, <em>float<sub>3</sub></em>])<br>
 <em>joint</em>:<strong>set_mode</strong>(<a href="#amotormode"><em>amotormode</em></a>)<br>
 <em>joint</em>:<strong>set_num_axes</strong>(<em>numaxes</em>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>) <em>N=1,2,3</em><br>
-<em>joint</em>:<strong>set_angleN</strong>(<em>float</em>) <em>N=1,2,3</em><br>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
+<em>joint</em>:<strong>set_axis3</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
+<em>joint</em>:<strong>set_angle1</strong>(<em>float</em>)<br>
+<em>joint</em>:<strong>set_angle2</strong>(<em>float</em>)<br>
+<em>joint</em>:<strong>set_angle3</strong>(<em>float</em>)<br>
 <a href="#amotormode"><em>amotormode</em></a> = <em>joint</em>:<strong>get_mode</strong>( )<br>
 <em>numaxes</em> = <em>joint</em>:<strong>get_num_axes</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2,3</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN</strong>( ) <em>N=1,2,3</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_angle_rateN</strong>( ) <em>N=1,2,3</em><br>
+<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a> = <em>joint</em>:<strong>get_axis3</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle3</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle_rate1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle_rate2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle_rate3</strong>( )<br>
 <span class="small"><em>numaxes</em>: 1, 2, or 3.</span></p>
 </li>
 </ul>
@@ -1558,9 +1591,13 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <p><a href="#joint"><em>joint</em></a> = <strong>create_lmotor_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>add_torques</strong>(<em>float<sub>1</sub></em> [, <em>float<sub>2</sub></em>, <em>float<sub>3</sub></em>])<br>
 <em>joint</em>:<strong>set_num_axes</strong>(<em>numaxes</em>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>) <em>N=1,2,3</em><br>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
+<em>joint</em>:<strong>set_axis3</strong>(<a href="#vec3"><em>vec3</em></a>, <a href="#relativeorientation"><em>relativeorientation</em></a>)<br>
 <em>numaxes</em> = <em>joint</em>:<strong>get_num_axes</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2,3</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis3</strong>( )<br>
 <span class="small"><em>numaxes</em>: 1, 2, or 3.</span></p>
 </li>
 </ul>
@@ -1592,9 +1629,11 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <ul>
 <li>
 <p><a href="#joint"><em>joint</em></a> = <strong>create_dball_joint</strong>(<a href="#world"><em>world</em></a>)<br>
-<em>joint</em>:<strong>set_anchorN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
+<em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_anchor2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>joint</em>:<strong>set_distance</strong>(<em>float</em>)<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_distance</strong>( )</p>
 </li>
 </ul>
@@ -1610,10 +1649,12 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <li>
 <p><a href="#joint"><em>joint</em></a> = <strong>create_dhinge_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>set_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_anchorN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
+<em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_anchor2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
 <em>joint</em>:<strong>set_distance</strong>(<em>float</em>)<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_distance</strong>( )</p>
 </li>
 </ul>
@@ -1630,20 +1671,28 @@ Rfr: <a href="http://ode.org/wiki/index.php?title=Manual#Parameter_Functions">Pa
 <p><a href="#joint"><em>joint</em></a> = <strong>create_transmission_joint</strong>(<a href="#world"><em>world</em></a>)<br>
 <em>joint</em>:<strong>set_mode</strong>(<a href="#transmissionmode"><em>transmissionmode</em></a>)<br>
 <em>joint</em>:<strong>set_axis</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
-<em>joint</em>:<strong>set_axisN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
-<em>joint</em>:<strong>set_anchorN</strong>(<a href="#vec3"><em>vec3</em></a>) <em>N=1,2</em><br>
-<em>joint</em>:<strong>set_radiusN</strong>(<em>float</em>) <em>N=1,2</em><br>
+<em>joint</em>:<strong>set_axis1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_axis2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_anchor1</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_anchor2</strong>(<a href="#vec3"><em>vec3</em></a>)<br>
+<em>joint</em>:<strong>set_radius1</strong>(<em>float</em>)<br>
+<em>joint</em>:<strong>set_radius2</strong>(<em>float</em>)<br>
 <em>joint</em>:<strong>set_ratio</strong>(<em>float</em>)<br>
 <em>joint</em>:<strong>set_backlash</strong>(<em>float</em>)<br>
 <a href="#transmissionmode"><em>transmissionmode</em></a> = <em>joint</em>:<strong>get_mode</strong>( )<br>
 <a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis</strong>( )<br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axisN</strong>( ) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchorN</strong>( ) <em>N=1,2</em><br>
-<em>float</em> = <em>joint</em>:<strong>get_radiusN</strong>( ) <em>N=1,2</em><br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_axis2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_anchor2</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_radius1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_radius2</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_ratio</strong>( )<br>
 <em>float</em> = <em>joint</em>:<strong>get_backlash</strong>( )<br>
-<em>float</em> = <em>joint</em>:<strong>get_angleN</strong>( ) <em>N=1,2</em><br>
-<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_contact_pointN</strong>( ) <em>N=1,2</em></p>
+<em>float</em> = <em>joint</em>:<strong>get_angle1</strong>( )<br>
+<em>float</em> = <em>joint</em>:<strong>get_angle2</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_contact_point1</strong>( )<br>
+<a href="#vec3"><em>vec3</em></a> = <em>joint</em>:<strong>get_contact_point2</strong>( )<br></p>
 </li>
 </ul>
 </div>

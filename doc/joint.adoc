@@ -34,14 +34,15 @@ _joint_++:++*enable*( ) +
 _joint_++:++*disable*( ) +
 _boolean_ = _joint_++:++*is_enabled*( ) +
 _integer_ = _joint_++:++*get_num_bodies*( ) +
-_joint_++:++*attach*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
-<<body, _body~1~_>>, <<body, _body~2~_>> = _joint_++:++*get_bodies*( ) +
-<<body, _body_>> = _joint_++:++*get_body1*( ) +
-<<body, _body_>> = _joint_++:++*get_body2*( ) +
+_joint_++:++*attach*([<<body, _body~1~_>>], [<<body, _body~2~_>>]) +
+[<<body, _body~1~_>>], [<<body, _body~2~_>>] = _joint_++:++*get_bodies*( ) +
+[<<body, _body_>>] = _joint_++:++*get_body1*( ) +
+[<<body, _body_>>] = _joint_++:++*get_body2*( ) +
 _joint_ = *connecting_joint*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _{joint}_ = *connecting_joint_list*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _boolean_ = *are_connected*(<<body, _body~1~_>>, <<body, _body~2~_>>) +
 _boolean_ = *are_connected_excluding*(<<body, _body~1~_>>, <<body, _body~2~_>>, <<jointtype_, _jointtype_>>) +
+[small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Miscellaneous_Joint_Functions[Miscellaneous Joint Functions].#
 
 [[joint_feedback]]
 * _joint_++:++*set_feedback*(_boolean_) +
@@ -79,8 +80,10 @@ _fdir1_: <<vec3, vec3>> (first friction direction, see http://ode.org/wiki/index
 [small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Ball_and_Socket[Ball and Socket].#
 
 * <<joint, _joint_>> = *create_ball_joint*(<<world, _world_>>) +
-_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchor2*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
 
 
 [[joint_hinge]]
@@ -92,7 +95,8 @@ _joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
 _joint_++:++*add_torque*(_float_) +
 _joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
 _joint_++:++*set_axis*(<<vec3, _vec3_>>) +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
 <<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
 _float_ = _joint_++:++*get_angle*( ) +
 _float_ = _joint_++:++*get_angle_rate*( )
@@ -118,11 +122,16 @@ _float_ = _joint_++:++*get_position_rate*( )
 * <<joint, _joint_>> = *create_hinge2_joint*(<<world, _world_>>) +
 _joint_++:++*add_torques*(_float~1~_, _float~2~_) +
 _joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
-_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
-_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
+_float_ = _joint_++:++*get_angle1*( ) +
+_float_ = _joint_++:++*get_angle2*( ) +
+_float_ = _joint_++:++*get_angle1_rate*( ) +
+_float_ = _joint_++:++*get_angle2_rate*( )
 
 
 [[joint_universal]]
@@ -133,11 +142,16 @@ _float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
 * <<joint, _joint_>> = *create_universal_joint*(<<world, _world_>>) +
 _joint_++:++*add_torques*(_float~1~_, _float~2~_) +
 _joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
-_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
-_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
+_float_ = _joint_++:++*get_angle1*( ) +
+_float_ = _joint_++:++*get_angle2*( ) +
+_float_ = _joint_++:++*get_angle1_rate*( ) +
+_float_ = _joint_++:++*get_angle2_rate*( ) +
 
 [[joint_pr]]
 ==== joint_pr
@@ -147,9 +161,11 @@ _float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_
 * <<joint, _joint_>> = *create_pr_joint*(<<world, _world_>>) +
 _joint_++:++*add_torque*(_float_) +
 _joint_++:++*set_anchor*(<<vec3, _vec3_>>) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>) +
 <<vec3, _vec3_>> = _joint_++:++*get_anchor*( ) +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
 _float_ = _joint_++:++*get_angle*( ) +
 _float_ = _joint_++:++*get_position*( ) +
 _float_ = _joint_++:++*get_angle_rate*( ) +
@@ -162,12 +178,18 @@ _float_ = _joint_++:++*get_position_rate*( )
 
 * <<joint, _joint_>> = *create_pu_joint*(<<world, _world_>>) +
 _joint_++:++*set_anchor*(<<vec3, _vec3_>>) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2,3_ +
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis3*(<<vec3, _vec3_>>) +
 <<vec3, _vec3_>> = _joint_++:++*get_anchor*( ) +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
-_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis3*( ) +
+_float_ = _joint_++:++*get_angle1*( ) +
+_float_ = _joint_++:++*get_angle2*( ) +
 _float_ = _joint_++:++*get_position*( ) +
-_float_ = _joint_++:++*get_angleN_rate*( ) _N=1,2_ +
+_float_ = _joint_++:++*get_angle1_rate*( ) +
+_float_ = _joint_++:++*get_angle2_rate*( ) +
 _float_ = _joint_++:++*get_position_rate*( )
 
 [[joint_piston]]
@@ -179,7 +201,8 @@ _float_ = _joint_++:++*get_position_rate*( )
 _joint_++:++*add_force*(_float_) +
 _joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
 _joint_++:++*set_axis*(<<vec3, _vec3_>>) +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
 <<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
 _float_ = _joint_++:++*get_angle*( ) +
 _float_ = _joint_++:++*get_position*( ) +
@@ -203,13 +226,23 @@ _joint_++:++*set*( ) +
 _joint_++:++*add_torques*(_float~1~_ [, _float~2~_, _float~3~_]) +
 _joint_++:++*set_mode*(<<amotormode, _amotormode_>>) +
 _joint_++:++*set_num_axes*(_numaxes_) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) _N=1,2,3_ +
-_joint_++:++*set_angleN*(_float_) _N=1,2,3_ +
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
+_joint_++:++*set_axis3*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
+_joint_++:++*set_angle1*(_float_) +
+_joint_++:++*set_angle2*(_float_) +
+_joint_++:++*set_angle3*(_float_) +
 <<amotormode, _amotormode_>> = _joint_++:++*get_mode*( ) +
 _numaxes_ = _joint_++:++*get_num_axes*( ) +
-<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
-_float_ = _joint_++:++*get_angleN*( ) _N=1,2,3_ +
-_float_ = _joint_++:++*get_angle_rateN*( ) _N=1,2,3_ +
+<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>> = _joint_++:++*get_axis2*( ) +
+<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>> = _joint_++:++*get_axis3*( ) +
+_float_ = _joint_++:++*get_angle1*( ) +
+_float_ = _joint_++:++*get_angle2*( ) +
+_float_ = _joint_++:++*get_angle3*( ) +
+_float_ = _joint_++:++*get_angle_rate1*( ) +
+_float_ = _joint_++:++*get_angle_rate2*( ) +
+_float_ = _joint_++:++*get_angle_rate3*( ) +
 [small]#_numaxes_: 1, 2, or 3.#
 
 [[joint_lmotor]]
@@ -220,9 +253,13 @@ _float_ = _joint_++:++*get_angle_rateN*( ) _N=1,2,3_ +
 * <<joint, _joint_>> = *create_lmotor_joint*(<<world, _world_>>) +
 _joint_++:++*add_torques*(_float~1~_ [, _float~2~_, _float~3~_]) +
 _joint_++:++*set_num_axes*(_numaxes_) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) _N=1,2,3_ +
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
+_joint_++:++*set_axis3*(<<vec3, _vec3_>>, <<relativeorientation, _relativeorientation_>>) +
 _numaxes_ = _joint_++:++*get_num_axes*( ) +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2,3_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis3*( ) +
 [small]#_numaxes_: 1, 2, or 3.#
 
 [[joint_plane2d]]
@@ -242,9 +279,11 @@ _joint_++:++*set_angle_param*(<<param, _param_>>, _float_, [_paramgroup_]) +
 [small]#Rfr: http://ode.org/wiki/index.php?title=Manual#Double_Ball_And_Socket[Double Ball And Socket].#
 
 * <<joint, _joint_>> = *create_dball_joint*(<<world, _world_>>) +
-_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchor2*(<<vec3, _vec3_>>) +
 _joint_++:++*set_distance*(_float_) +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
 _float_ = _joint_++:++*get_distance*( )
 
 [[joint_dhinge]]
@@ -254,10 +293,12 @@ _float_ = _joint_++:++*get_distance*( )
 
 * <<joint, _joint_>> = *create_dhinge_joint*(<<world, _world_>>) +
 _joint_++:++*set_axis*(<<vec3, _vec3_>>) +
-_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchor2*(<<vec3, _vec3_>>) +
 _joint_++:++*set_distance*(_float_) +
 <<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
 _float_ = _joint_++:++*get_distance*( )
 
 [[joint_transmission]]
@@ -268,18 +309,26 @@ _float_ = _joint_++:++*get_distance*( )
 * <<joint, _joint_>> = *create_transmission_joint*(<<world, _world_>>) +
 _joint_++:++*set_mode*(<<transmissionmode, _transmissionmode_>>) +
 _joint_++:++*set_axis*(<<vec3, _vec3_>>) +
-_joint_++:++*set_axisN*(<<vec3, _vec3_>>) _N=1,2_ +
-_joint_++:++*set_anchorN*(<<vec3, _vec3_>>) _N=1,2_ +
-_joint_++:++*set_radiusN*(_float_) _N=1,2_ +
+_joint_++:++*set_axis1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_axis2*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchor1*(<<vec3, _vec3_>>) +
+_joint_++:++*set_anchor2*(<<vec3, _vec3_>>) +
+_joint_++:++*set_radius1*(_float_) +
+_joint_++:++*set_radius2*(_float_) +
 _joint_++:++*set_ratio*(_float_) +
 _joint_++:++*set_backlash*(_float_) +
 <<transmissionmode, _transmissionmode_>> = _joint_++:++*get_mode*( ) +
 <<vec3, _vec3_>> = _joint_++:++*get_axis*( ) +
-<<vec3, _vec3_>> = _joint_++:++*get_axisN*( ) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_anchorN*( ) _N=1,2_ +
-_float_ = _joint_++:++*get_radiusN*( ) _N=1,2_ +
+<<vec3, _vec3_>> = _joint_++:++*get_axis1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_axis2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_anchor2*( ) +
+_float_ = _joint_++:++*get_radius1*( ) +
+_float_ = _joint_++:++*get_radius2*( ) +
 _float_ = _joint_++:++*get_ratio*( ) +
 _float_ = _joint_++:++*get_backlash*( ) +
-_float_ = _joint_++:++*get_angleN*( ) _N=1,2_ +
-<<vec3, _vec3_>> = _joint_++:++*get_contact_pointN*( ) _N=1,2_
+_float_ = _joint_++:++*get_angle1*( ) +
+_float_ = _joint_++:++*get_angle2*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_contact_point1*( ) +
+<<vec3, _vec3_>> = _joint_++:++*get_contact_point2*( ) +
 
