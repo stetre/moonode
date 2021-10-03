@@ -44,8 +44,10 @@ static int freegeom(lua_State *L, ud_t *ud)
     {
     geom_t geom = (geom_t)ud->handle;
     info_t *info = (info_t*)ud->info;
+    ud->info = NULL; /* to prevent automatic release */
     if(!freeuserdata(L, ud, "geom_convex")) return 0;
     FreeInfo(L, info);
+    Free(L, info);
     geomdestroy(L, geom);
     return 0;
     }
@@ -67,7 +69,7 @@ static int Create(lua_State *L)
     unsigned int polygoncount;
     geom_t geom = NULL;
     space_t space = checkspace(L, 1, NULL);
-    info_t* info = Malloc(L, sizeof(info));
+    info_t* info = Malloc(L, sizeof(info_t));
 #define Cleanup() do { FreeInfo(L, info); Free(L, info); } while(0)
     info->planes = (double*)checkvec4list(L, 2, &planecount, &err);
     if(err) { Cleanup(); return argerror(L, 2, err); }
