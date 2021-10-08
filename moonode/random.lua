@@ -86,6 +86,11 @@ local function randomrot()
 	return r_from_axis_and_angle(randomdir(), randomf(0, pi2))
 end
 
+local q_from_r = ode.q_from_r
+local function randomquat()
+	return q_from_r(randomrot())
+end
+
 ode.random = math.random
 ode.randomf = randomf
 ode.randomi = randomi
@@ -95,5 +100,6 @@ ode.randomvec4 = randomvec4
 ode.randommat3 = randommat3
 ode.randomsign = randomsign
 ode.randomrot = randomrot
+ode.randomquat = randomquat
 
 end

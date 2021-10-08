@@ -2252,7 +2252,7 @@ To seed them, use
 <p><a href="#vec3"><em>vec3</em></a> = <strong>randomvec3</strong>([<em>a</em>])<br>
 <a href="#vec4"><em>vec4</em></a> = <strong>randomvec4</strong>([<em>a</em>])<br>
 <a href="#mat3"><em>mat3</em></a> = <strong>randommat3</strong>([<em>a</em>])<br>
-<span class="small">Return a vector or matrix with random components in the range [<em>-a</em>, <em>a</em>) (default: [0.0, 1.0)).</span></p>
+<span class="small">Return a vector or matrix with random components in the range [<em>-a</em>, <em>a</em>) (default: [-1.0, 1.0)).</span></p>
 </li>
 <li>
 <p><a href="#vec3"><em>vec3</em></a> = <strong>randomdir</strong>( )<br>
@@ -2260,7 +2260,8 @@ To seed them, use
 </li>
 <li>
 <p><a href="#mat3"><em>mat3</em></a> = <strong>randomrot</strong>( )<br>
-<span class="small">Returns a random rotation matrix.</span></p>
+<a href="#quat"><em>quat</em></a> = <strong>randomquat</strong>( )<br>
+<span class="small">Returns a random rotation.</span></p>
 </li>
 <li>
 <p><em>float</em> = <strong>randomsign</strong>( )<br>
