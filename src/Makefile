@@ -33,7 +33,7 @@ ifeq ($(D),1)
 DEBUG=1
 endif
 
-ODE= ode-0.16.2
+ODE= ode-0.16.3
 ODEFLAGS= --enable-double-precision --with-pic --enable-static --with-drawstuff=none --disable-demos --with-libccd
 ifndef DEBUG
 ODEFLAGS+= --disable-asserts
