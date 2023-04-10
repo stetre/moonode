@@ -33,18 +33,11 @@ ifeq ($(D),1)
 DEBUG=1
 endif
 
-ODE= ode-0.16.3
-ODEFLAGS= --enable-double-precision --with-pic --enable-static --with-drawstuff=none --disable-demos --with-libccd
-ifndef DEBUG
-ODEFLAGS+= --disable-asserts
-endif
-
 ifdef LINUX
-LIBS =  libode.a -lpthread
+LIBS =  -lode -lpthread
 endif
 ifdef MINGW
-LIBS =  libode.a -lpthread
-LIBS = -llua
+LIBS = -lode -llua
 endif
 
 Tgt	:= moonode
@@ -93,11 +86,6 @@ clean:
 	@-rm -f *.so *.dll *.o *.err *.map *.S *~ *.log
 	@-rm -f $(Tgt).symbols
 
-cleanall: clean
-	@rm -f libode.a
-	@rm -fr ode
-	@rm -fr $(ODE)
-
 install:
 	@-mkdir -pv $(H_DIR)
 	@-mkdir -pv $(C_DIR)
@@ -125,15 +113,7 @@ build:	clean $(Tgt)
 symbols: build
 	@objdump -T $(Tgt).so > $(Tgt).symbols
 
-libode.a:
-	@rm -fr $(ODE)
-	@tar -zxvf $(ODE).tar.gz
-	@cd $(ODE); ./configure $(ODEFLAGS)
-	@cd $(ODE); $(MAKE)
-	@cp -fr $(ODE)/include/ode .
-	@cp -f $(ODE)/ode/src/.libs/libode.a .
-
-$(Tgt):	libode.a $(Objs)
+$(Tgt):	$(Objs)
 ifdef LINUX
 	@$(CXX) -shared -o $(Tgt).so $(Objs) $(LIBDIR) $(LIBS)
 endif

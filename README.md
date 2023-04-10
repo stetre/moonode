@@ -3,7 +3,7 @@
 MoonODE is a Lua binding library for the [Open Dynamics Engine](https://www.ode.org) (3D physics engine).
 
 It runs on GNU/Linux <!-- and on Windows (MSYS2/MinGW) --> and requires 
-[Lua](http://www.lua.org/) (>=5.3).
+[Lua](http://www.lua.org/) (>=5.3) and [ODE](https://bitbucket.org/odedevs/ode/downloads/) (>= 0.16.2).
 
 The [ODE](https://bitbucket.org/odedevs/ode/downloads/) sources are bundled with MoonODE, so there
 is no need to download and install the package independently.

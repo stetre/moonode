@@ -11,5 +11,3 @@ core.*
 local/
 src/TODO
 src/DIFF
-src/ode
-src/ode-0.16.3

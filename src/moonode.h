@@ -31,7 +31,7 @@
 #include "lauxlib.h"
 #include "compat-5.3.h"
 
-#include "ode/ode.h"
+#include <ode/ode.h>
 
 #ifndef dDOUBLE
 #error "MoonODE requires double-precision ODE"
