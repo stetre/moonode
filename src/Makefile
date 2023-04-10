@@ -37,7 +37,7 @@ ifdef LINUX
 LIBS =  -lode -lpthread
 endif
 ifdef MINGW
-LIBS = -lode -llua
+LIBS = -lode_double -llua
 endif
 
 Tgt	:= moonode
