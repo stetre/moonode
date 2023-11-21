@@ -90,9 +90,9 @@ static int SetMode(lua_State *L)
 static int AddTorques(lua_State *L)
     {
     joint_t joint = checkjoint_amotor(L, 1, NULL);
-    double torque0 = luaL_optnumber(L, 1, 0);
-    double torque1 = luaL_optnumber(L, 2, 0);
-    double torque2 = luaL_optnumber(L, 3, 0);
+    double torque0 = luaL_optnumber(L, 2, 0);
+    double torque1 = luaL_optnumber(L, 3, 0);
+    double torque2 = luaL_optnumber(L, 4, 0);
     dJointAddAMotorTorques(joint, torque0, torque1, torque2);
     return 0;
     }

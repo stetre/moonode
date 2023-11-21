@@ -55,7 +55,7 @@ static int Create(lua_State *L)
 static int Func(lua_State *L)                           \
     {                                                   \
     vec3_t axis;                                        \
-    joint_t joint = checkjoint_amotor(L, 1, NULL);      \
+    joint_t joint = checkjoint_lmotor(L, 1, NULL);      \
     int rel = checkrelativeorientation(L, 3);           \
     checkvec3(L, 2, axis);                              \
     dJointSetLMotorAxis(joint, anum, rel, axis[0], axis[1], axis[2]);   \
@@ -71,7 +71,7 @@ F(SetAxis2, 2)
 static int Func(lua_State *L)                       \
     {                                               \
     vec3_t axis;                                    \
-    joint_t joint = checkjoint_amotor(L, 1, NULL);  \
+    joint_t joint = checkjoint_lmotor(L, 1, NULL);  \
     dJointGetLMotorAxis(joint, anum, axis);         \
     pushvec3(L, axis);                              \
     return 1;                                       \
